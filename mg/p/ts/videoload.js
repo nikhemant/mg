@@ -51,12 +51,10 @@
 		document.getElementById('assets-id').appendChild(videoelem);
 		videoelem.pause();
 		videoelem.muted = false;
-	});		
+	});
 
 
-
-	function PlayPause()
-	{
+	function PlayPause() {
 		el = document.getElementById("btnplaypause");
 		if (el.classList.contains("playimg")) {
 		  el.classList.remove("playimg");
@@ -68,4 +66,10 @@
 		  el.classList.add("playimg");
 		videoelem.muted = false;
 		}
+	}
+
+	function AutoPlay() {
+		document.getElementById('btnautoplay').style.display = 'none';
+		document.getElementById('imgfingerup').style.display = 'none';	
+		videoelem.play();
 	}
