@@ -71,5 +71,6 @@
 	function AutoPlay() {
 		document.getElementById('btnautoplay').style.display = 'none';
 		document.getElementById('imgfingerup').style.display = 'none';	
-		videoelem.play();
+		if(document.getElementById("imgtrackerguide").style.display == "none")
+			videoelem.play();
 	}
