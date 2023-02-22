@@ -1,0 +1,59 @@
+
+<html>
+  <head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHEMPBCMQ0"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-FHEMPBCMQ0');
+	</script>	
+	<!-- Google AdSense -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6200372910935519"
+     crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Miraag - AR Experiences - T shirt </title>
+	<meta content="Augmented Reality experiences for everyone - T shirt " name="description">
+	<meta content="Augmented Reality, AR Gift Cards, AR Flash Cards, 3D Cards, 3D Tshirts, AR Tshirts, AR Apparels, AR Gifts" name="keywords">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	
+    <script src="../../../js/aframe.min.js"></script>
+    <script src="../../../js/mgar.js"></script>
+    <script src="../../../js/aframe-extras.min.js"></script>
+    <script src="../videoload2.js"></script>
+	<script src="../iphone-inline-video.min.js"></script>
+	<link rel="stylesheet" href="../style2.css"/>
+  </head>
+  <body>
+	<div class="topcontainer"><img id="img_miraag_tshirts_logo" src="../../../imgs/miraag_tshirts_logo-sm.png" /></div>
+	<video id="videoplayback" muted src="" crossorigin playsinline></video>
+  	<div id="divbottom" class="bottomcontainer">
+		<a id="btnShopNow" href="https://www.miraag.store"/><button type="button" style="background-color: #ff3333; padding: 10px;border-radius: 7px; border: none;color: white; width:200px"><b>Liked it? BUY NOW</b></button></a>
+	</div>	
+	<div class="centercontainer">
+		<img id="imgtrackerguide" src="" width="200" height="200" style="opacity:0.2;"/>
+	</div>
+	<div class="rightsidecontainer">
+		<button id="btnplaypause" class="buttons playimg" onclick="PlayPause()" style=""></button> 
+		<button id="btnautoplay" class="buttons play" onclick="AutoPlay()"/></button>
+		<img id="imgfingerup" src="../../../imgs/finger_pointing_up.gif" style="height:37px; width:37px;" />
+	</div>	
+	
+	<!-- Scene placeholder -->
+	
+		<div id="divscanning" class="mgar-ui-overlay mgar-ui-scanning">
+			<div class="scanning">
+				<div class="inner">
+				  <div class="scanline"/>
+				</div>
+			</div>
+		</div>
+		<div id="divloading" class="mgar-ui-overlay mgar-ui-loading">
+			<div class="loader"/>
+		</div>
+  </body>
+</html>
