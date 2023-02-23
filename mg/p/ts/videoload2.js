@@ -38,7 +38,7 @@
 		const id = params.get('id');
 		const name = params.get('name');		
 		
-		const mdlpath = "https://www.mdl.miraag.com/models/ts/";
+		const mdlpath = "https://mdl.miraag.com/models/ts/";
 		
 		document.title = document.title + " - " + cat + " - " + name;
 		document.querySelector('meta[name="description"]').setAttribute("content", document.querySelector('meta[name="description"]').content + " - " + cat + " - " + name);
