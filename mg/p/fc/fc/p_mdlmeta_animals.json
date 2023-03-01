@@ -4,7 +4,7 @@
   "comments": "name-n, path-p; objfilename-o; mtlfilename-m; soundfilename-s; scale-k; rotation-r; animation>to-a, prevmodelorder-pv; nextmodelorder-nx; position(opt)-po",	
   "0": {
 	"n": "Elephant",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "elephant.glb", 
 	"m": "",
 	"s": "elephant.mp3",
@@ -15,7 +15,7 @@
   },
   "1": {
 	"n": "Camel",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "camel.glb", 
 	"m": "",
 	"s": "camel.mp3",
@@ -26,7 +26,7 @@
   },
   "2": {
 	"n": "Rhinoceros",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "rhino.glb", 
 	"m": "",
 	"s": "rhino.mp3",
@@ -38,7 +38,7 @@
   },
   "3": {
 	"n": "Kangaroo",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "kangaroo.glb", 
 	"m": "",
 	"s": "kangaroo.mp3",
@@ -49,7 +49,7 @@
   },
   "4": {
 	"n": "Snake",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "snake.glb", 
 	"m": "",
 	"s": "snake.mp3",
@@ -60,7 +60,7 @@
   },
   "5": {
 	"n": "Tiger",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "tiger.glb", 
 	"m": "",
 	"s": "tiger.mp3",
@@ -71,7 +71,7 @@
   },
   "6": {
 	"n": "Zebra",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "zebra.glb", 
 	"m": "",
 	"s": "zebra.mp3",
@@ -82,7 +82,7 @@
   },
   "7": {
 	"n": "Bear",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "bear.glb", 
 	"m": "",
 	"s": "bear.mp3",
@@ -93,7 +93,7 @@
   },
   "8": {
 	"n": "Deer",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "deer.glb", 
 	"m": "",
 	"s": "deer.mp3",
@@ -104,7 +104,7 @@
   },
   "9": {
 	"n": "Lion",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "lion.glb", 
 	"m": "",
 	"s": "lion.mp3",
@@ -115,7 +115,7 @@
   },
   "10": {
 	"n": "Crocodile",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "crocodile.glb", 
 	"m": "",
 	"s": "crocodile.mp3",
@@ -126,7 +126,7 @@
   },
   "11": {
 	"n": "Giraffe",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "giraffe.glb", 
 	"m": "",
 	"s": "giraffe.mp3",
@@ -137,7 +137,7 @@
   },
   "12": {
 	"n": "Horse",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "horse.glb", 
 	"m": "",
 	"s": "horse.mp3",
@@ -148,7 +148,7 @@
   },
   "13": {
 	"n": "Hippopotamus",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "hippopotamus.glb", 
 	"m": "",
 	"s": "hippopotamus.mp3",
@@ -159,7 +159,7 @@
   },
   "14": {
 	"n": "Monkey",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "monkey.glb", 
 	"m": "",
 	"s": "monkey.mp3",
@@ -170,7 +170,7 @@
   },
   "15": {
 	"n": "Wolf",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "wolf.glb", 
 	"m": "",
 	"s": "wolf.mp3",
@@ -181,7 +181,7 @@
   },
   "16": {
 	"n": "Cheetah",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "cheetah.glb", 
 	"m": "",
 	"s": "cheetah.mp3",
@@ -192,7 +192,7 @@
   },
   "17": {
 	"n": "Fox",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "fox.glb", 
 	"m": "",
 	"s": "fox.mp3",
@@ -203,7 +203,7 @@
   },
   "18": {
 	"n": "Tortoise",
-	"p": "http://mdl.miraag.com/models/fc/animals/",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "tortoise.glb", 
 	"m": "",
 	"s": "tortoise.mp3",
