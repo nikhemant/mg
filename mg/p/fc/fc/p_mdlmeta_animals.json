@@ -37,28 +37,6 @@
 	"po": "0 0 0"
   },
   "3": {
-	"n": "Kangaroo",
-	"p": "https://mdl.miraag.com/models/fc/animals/",
-	"o": "kangaroo.glb", 
-	"m": "",
-	"s": "kangaroo.mp3",
-	"a": "0 0 0",
-	"k": "0.5 0.4 0.5",
-	"r": "90 0 0",
-	"po": "0 0 0"
-  },
-  "4": {
-	"n": "Snake",
-	"p": "https://mdl.miraag.com/models/fc/animals/",
-	"o": "snake.glb", 
-	"m": "",
-	"s": "snake.mp3",
-	"a": "0 0 0",
-	"k": "0.5 0.5 0.5",
-	"r": "90 0 0",
-	"po": "0 0 0"
-  },
-  "5": {
 	"n": "Tiger",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "tiger.glb", 
@@ -69,7 +47,7 @@
 	"r": "90 0 0",
 	"po": "0 0 0"
   },
-  "6": {
+  "4": {
 	"n": "Zebra",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "zebra.glb", 
@@ -80,7 +58,7 @@
 	"r": "90 0 0",
 	"po": "0 0 0"
   },
-  "7": {
+  "5": {
 	"n": "Bear",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "bear.glb", 
@@ -91,7 +69,7 @@
 	"r": "90 0 0",
 	"po": "0 0 0"
   },
-  "8": {
+  "6": {
 	"n": "Deer",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "deer.glb", 
@@ -102,7 +80,7 @@
 	"r": "90 0 0",
 	"po": "0 0 0"
   },
-  "9": {
+  "7": {
 	"n": "Lion",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "lion.glb", 
@@ -113,18 +91,7 @@
 	"r": "90 0 0",
 	"po": "0 0 0"
   },
-  "10": {
-	"n": "Crocodile",
-	"p": "https://mdl.miraag.com/models/fc/animals/",
-	"o": "crocodile.glb", 
-	"m": "",
-	"s": "crocodile.mp3",
-	"a": "0 0 0",
-	"k": "0.3 0.3 0.3",
-	"r": "90 0 0",
-	"po": "0 0 0"
-  },
-  "11": {
+  "8": {
 	"n": "Giraffe",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "giraffe.glb", 
@@ -135,18 +102,7 @@
 	"r": "90 0 0",
 	"po": "0 0 0"
   },
-  "12": {
-	"n": "Horse",
-	"p": "https://mdl.miraag.com/models/fc/animals/",
-	"o": "horse.glb", 
-	"m": "",
-	"s": "horse.mp3",
-	"a": "0 0 0",
-	"k": "0.3 0.3 0.3",
-	"r": "90 0 0",
-	"po": "0 0 0"
-  },
-  "13": {
+  "9": {
 	"n": "Hippopotamus",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "hippopotamus.glb", 
@@ -157,7 +113,7 @@
 	"r": "90 0 0",
 	"po": "0 0 0"
   },
-  "14": {
+  "10": {
 	"n": "Monkey",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "monkey.glb", 
@@ -168,7 +124,7 @@
 	"r": "90 0 0",
 	"po": "0.5 0 0"
   },
-  "15": {
+  "11": {
 	"n": "Wolf",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "wolf.glb", 
@@ -179,18 +135,7 @@
 	"r": "90 0 0",
 	"po": "0 0 0.5"
   },
-  "16": {
-	"n": "Cheetah",
-	"p": "https://mdl.miraag.com/models/fc/animals/",
-	"o": "cheetah.glb", 
-	"m": "",
-	"s": "cheetah.mp3",
-	"a": "0 0 0",
-	"k": "0.3 0.3 0.3",
-	"r": "90 0 0",
-	"po": "0 0 0"
-  },
-  "17": {
+  "12": {
 	"n": "Fox",
 	"p": "https://mdl.miraag.com/models/fc/animals/",
 	"o": "fox.glb", 
@@ -200,6 +145,67 @@
 	"k": "0.1 0.1 0.1",
 	"r": "90 0 0",
 	"po": "0 0 0.5"
+  }, 
+  
+  
+  
+  
+  
+  
+  "13": {
+	"n": "Kangaroo",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"o": "kangaroo.glb", 
+	"m": "",
+	"s": "kangaroo.mp3",
+	"a": "0 0 0",
+	"k": "0.5 0.4 0.5",
+	"r": "90 0 0",
+	"po": "0 0 0"
+  },
+  "14": {
+	"n": "Snake",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"o": "snake.glb", 
+	"m": "",
+	"s": "snake.mp3",
+	"a": "0 0 0",
+	"k": "0.5 0.5 0.5",
+	"r": "90 0 0",
+	"po": "0 0 0"
+  },
+  "15": {
+	"n": "Crocodile",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"o": "crocodile.glb", 
+	"m": "",
+	"s": "crocodile.mp3",
+	"a": "0 0 0",
+	"k": "0.3 0.3 0.3",
+	"r": "90 0 0",
+	"po": "0 0 0"
+  },
+  "16": {
+	"n": "Horse",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"o": "horse.glb", 
+	"m": "",
+	"s": "horse.mp3",
+	"a": "0 0 0",
+	"k": "0.3 0.3 0.3",
+	"r": "90 0 0",
+	"po": "0 0 0"
+  },
+  "17": {
+	"n": "Cheetah",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"o": "cheetah.glb", 
+	"m": "",
+	"s": "cheetah.mp3",
+	"a": "0 0 0",
+	"k": "0.3 0.3 0.3",
+	"r": "90 0 0",
+	"po": "0 0 0"
   },
   "18": {
 	"n": "Tortoise",
