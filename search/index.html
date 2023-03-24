@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px Arial;  
+}
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: flex;
+  margin: 20px;
+  width: 90%;
+  justify-content: center; align-items: center; display: flex; justify-content: center; align-items: center; 
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f5f5f5;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+</style>
+
+  <style media="screen">
+
+body{
+	line-height: 1.5;
+	font-family: sans-serif;
+}
+*{
+	margin:0;
+	box-sizing: border-box;
+}
+.container{
+	max-width: 1170px;
+	margin:auto;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+img{
+	max-width: 100%;
+	vertical-align: middle;
+}
+/*.gallery*/
+.gallery{
+	width: 100%;
+	display: block;
+	min-height: 100vh;
+	background-color: #fefefe;
+	padding: 10px 0;
+}
+.gallery .gallery-filter{
+	padding: 0 15px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 40px;
+}
+.gallery .gallery-filter .filter-item{
+	color: #ffffff;
+	font-size: 17px;
+  border: 2px solid white;
+	text-transform: uppercase;
+	display: inline-block;
+  border-radius: 20px;
+  margin-right: 8px;
+	cursor: pointer;
+  padding: 8px 20px 8px 20px;
+	line-height: 1.2;
+	transition: all 0.3s ease;
+}
+.gallery .gallery-filter .filter-item.active{
+	color: white;
+	border-color : #16b5ef;
+  background: #16b5ef;
+}
+.gallery .gallery-item{
+	width: calc(100% / 3);
+	padding: 15px;
+
+}
+.gallery .gallery-item-inner img{
+	width: 100%;
+  border: 3px solid #d4dad9;
+}
+.gallery .gallery-item.show{
+	animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+.gallery .gallery-item.hide{
+	display: none;
+}
+
+/*responsive*/
+@media(max-width: 491px){
+	.gallery .gallery-item{
+		width: 50%;
+	}
+}
+@media(max-width: 467px){
+    .gallery .gallery-item{
+		width: 100%;
+	}
+	.gallery .gallery-filter .filter-item{
+		margin-bottom: 10px;
+	}
+}
+
+</style>
+
+</head>     
+<body>
+
+	<div><img id="img_miraag_logo" src="../mg/imgs/miraag_logo-sm.png" style="height: 50px; align-content: center;" /></div>
+
+<!--Make sure the form has the autocomplete function switched off:-->
+<form autocomplete="off">
+  <div class="autocomplete">
+    <input id="myInput" type="text" name="myCountry" placeholder="Start typing to search..">
+  </div>
+  <!--<input type="submit">--> 
+  
+  
+<section class="gallery">
+	<div class="container">
+		<div class="row">
+			<!-- gallery item start -->
+			<div class="gallery-item" name="MNS">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=mns">
+						<img src="https://mdl.miraag.com/models/logo/mns/mns.png" alt="mns">
+					</a>
+				</div>
+			</div>
+			<!-- gallery item end -->
+			<div class="gallery-item" name="Google">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=google">
+						<img src="https://mdl.miraag.com/models/logo/google/google.png" alt="Google">
+					</a>
+				</div>
+			</div>
+			<div class="gallery-item" name="Coca-Cola">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=cocacola">
+						<img src="https://mdl.miraag.com/models/logo/cocacola/cocacola.png" alt="Coca-Cola">
+					</a>
+				</div>
+			</div>
+			<div class="gallery-item" name="MNS card">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=cardmns">
+						<img src="https://mdl.miraag.com/models/logo/cardmns/cardmns.png" alt="MNS card">
+					</a>
+				</div>
+			</div>
+			<div class="gallery-item" name="Crocin">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=crocin">
+						<img src="https://mdl.miraag.com/models/logo/crocin/crocin.png" alt="Crocin">
+					</a>
+				</div>
+			</div>
+			<div class="gallery-item" name="Haware">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=haware">
+						<img src="https://mdl.miraag.com/models/logo/haware/haware.png" alt="Haware">
+					</a>
+				</div>
+			</div>
+			<div class="gallery-item" name="M F Hussain Painting">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=mfhussainpainting">
+						<img src="https://mdl.miraag.com/models/logo/mfhussainpainting/mfhussainpainting.png" alt="M F Hussain Painting">
+					</a>
+				</div>
+			</div>
+			<div class="gallery-item" name="Prashant Damle">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=prashantdamle">
+						<img src="https://mdl.miraag.com/models/logo/prashantdamle/prashantdamle.png" alt="Prashant Damle">
+					</a>
+				</div>
+			</div>
+			<div class="gallery-item" name="Savlon">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=savlon">
+						<img src="https://mdl.miraag.com/models/logo/savlon/savlon.png" alt="Savlon">
+					</a>
+				</div>
+			</div>
+			<div class="gallery-item" name="Zee Marathi Serial Agga Bai Sasubai">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=zeemarathiserialaggabaisasubai">
+						<img src="https://mdl.miraag.com/models/logo/zeemarathiserialaggabaisasubai/zeemarathiserialaggabaisasubai.png" alt="Zee Marathi Serial Agga Bai Sasubai">
+					</a>
+				</div>
+			</div>
+			
+
+		</div>
+	</div>
+</section>
+
+
+  
+  
+  
+</form>
+
+<script>
+//https://www.w3schools.com/howto/howto_js_autocomplete.asp
+//https://foolishdeveloper.com/responsive-filterable-image-gallery-using-html-css-javascript/
+
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists(); 
+      if (!val) { showAllImages(); return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+			  fnfilterImages(inp.value);
+          });
+          a.appendChild(b);
+		  fnfilterImages(val);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+/*An array containing all the country names in the world:*/
+//var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+var markers = ["MNS","Google","Coca-Cola","MNS card","Crocin","Haware","M F Hussain Painting","Prashant Damle","Savlon","Zee Marathi Serial Agga Bai Sasubai"]
+
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("myInput"), markers);
+</script>
+
+
+
+<script>
+const galleryItems = document.querySelectorAll(".gallery-item");
+
+function fnfilterImages(val) {
+	 const filterValue = val;
+	 galleryItems.forEach((item) =>{
+	   //if(item.classList.contains(filterValue) || filterValue === 'all'){
+	   if (item.getAttribute("name").substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+		item.classList.remove("hide");
+		 item.classList.add("show");
+	   }
+	   else{
+		item.classList.remove("show");
+		item.classList.add("hide");
+	   }
+	 });
+ }
+ 
+function showAllImages() {
+	 galleryItems.forEach((item) =>{
+		item.classList.remove("hide");
+		 item.classList.add("show");
+	 });
+} 
+</script>
+
+</body>
+</html>
