@@ -11,6 +11,8 @@
 	.playimg { background-image: url(../../imgs/mute.png); background-repeat: no-repeat; align-items: center; height:37px; width:37px; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
 	.pauseimg { background-image: url(../../imgs/unmute.png); background-repeat: no-repeat; align-items: center; height:37px; width:37px; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
 	.play { background-image: url(../../imgs/play.png); display:flex; background-repeat: no-repeat; align-items: center; height:37px; width:37px; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
+	.lockimg { background-image: url(../../imgs/lock.png); display:flex; background-repeat: no-repeat; align-items: center; height:37px; width:37px; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
+	.unlockimg { background-image: url(../../imgs/unlock.png); display:flex; background-repeat: no-repeat; align-items: center; height:37px; width:37px; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
 	
 	.IIV::-webkit-media-controls-play-button,
 	.IIV::-webkit-media-controls-start-playback-button {
