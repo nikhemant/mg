@@ -2,315 +2,28 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font: 16px Arial;  
-}
-
-/*the container must be positioned relative:*/
-.autocomplete {
-  position: relative;
-  display: flex;
-  margin: 20px;
-  width: 90%;
-  justify-content: center; align-items: center; display: flex; justify-content: center; align-items: center; 
-}
-
-input {
-  border: 1px solid transparent;
-  background-color: #f1f1f1;
-  padding: 10px;
-  font-size: 16px;
-}
-
-input[type=text] {
-  background-color: #f5f5f5;
-  width: 100%;
-}
-
-input[type=submit] {
-  background-color: DodgerBlue;
-  color: #fff;
-  cursor: pointer;
-}
-
-.autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
-}
-
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff; 
-  border-bottom: 1px solid #d4d4d4; 
-}
-
-/*when hovering an item:*/
-.autocomplete-items div:hover {
-  background-color: #e9e9e9; 
-}
-
-/*when navigating through the items using the arrow keys:*/
-.autocomplete-active {
-  background-color: DodgerBlue !important; 
-  color: #ffffff; 
-}
-</style>
-
-  <style media="screen">
-
-body{
-	line-height: 1.5;
-	font-family: sans-serif;
-}
-*{
-	margin:0;
-	box-sizing: border-box;
-}
-.container{
-	max-width: 1170px;
-	margin:auto;
-}
-.row{
-	display: flex;
-	flex-wrap: wrap;
-}
-img{
-	max-width: 100%;
-	vertical-align: middle;
-}
-/*.gallery*/
-.gallery{
-	width: 100%;
-	display: block;
-	min-height: 100vh;
-	background-color: #fefefe;
-	padding: 10px 0;
-}
-.gallery .gallery-filter{
-	padding: 0 15px;
-	width: 100%;
-	text-align: center;
-	margin-bottom: 40px;
-}
-.gallery .gallery-filter .filter-item{
-	color: #ffffff;
-	font-size: 17px;
-  border: 2px solid white;
-	text-transform: uppercase;
-	display: inline-block;
-  border-radius: 20px;
-  margin-right: 8px;
-	cursor: pointer;
-  padding: 8px 20px 8px 20px;
-	line-height: 1.2;
-	transition: all 0.3s ease;
-}
-.gallery .gallery-filter .filter-item.active{
-	color: white;
-	border-color : #16b5ef;
-  background: #16b5ef;
-}
-.gallery .gallery-item{
-	width: calc(100% / 3);
-	padding: 15px;
-
-}
-.gallery .gallery-item-inner img{
-	width: 100%;
-  border: 3px solid #d4dad9;
-}
-.gallery .gallery-item.show{
-	animation: fadeIn 0.5s ease;
-}
-@keyframes fadeIn{
-	0%{
-		opacity: 0;
-	}
-	100%{
-		opacity: 1;
-	}
-}
-.gallery .gallery-item.hide{
-	display: none;
-}
-
-/*responsive*/
-@media(max-width: 491px){
-	.gallery .gallery-item{
-		width: 50%;
-	}
-}
-@media(max-width: 467px){
-    .gallery .gallery-item{
-		width: 100%;
-	}
-	.gallery .gallery-filter .filter-item{
-		margin-bottom: 10px;
-	}
-}
-
-</style>
-
+<link rel="stylesheet" href="style2.css" media="screen"/>
 </head>     
 <body>
 
-	<div><img id="img_miraag_logo" src="../mg/imgs/miraag_logo-sm.png" style="height: 50px; align-content: center;" /></div>
+<div><img id="img_miraag_logo" src="../mg/imgs/miraag_logo-sm.png" style="height: 50px; align-content: center;" /></div>
 
 <!--Make sure the form has the autocomplete function switched off:-->
 <form autocomplete="off">
   <div class="autocomplete">
-    <input id="myInput" type="text" name="myCountry" placeholder="Start typing to search..">
+    <input id="myInput" type="text" name="logoname" placeholder="Start typing to search..">
   </div>
   <!--<input type="submit">--> 
   
   
 <section class="gallery">
 	<div class="container">
-		<div class="row">
+		<div class="row" id="gallerycontainer">
 			<!-- gallery item start -->
-			<div class="gallery-item" name="MNS">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=mns">
-						<img src="https://mdl.miraag.com/models/logo/mns/mns.png" alt="mns">
-					</a>
-				</div>
-			</div>
 			<!-- gallery item end -->
-			<div class="gallery-item" name="Google">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=google">
-						<img src="https://mdl.miraag.com/models/logo/google/google.png" alt="Google">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Coca-Cola">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=cocacola">
-						<img src="https://mdl.miraag.com/models/logo/cocacola/cocacola.png" alt="Coca-Cola">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="MNS card">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=cardmns">
-						<img src="https://mdl.miraag.com/models/logo/cardmns/cardmns.png" alt="MNS card">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Crocin">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=crocin">
-						<img src="https://mdl.miraag.com/models/logo/crocin/crocin.png" alt="Crocin">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Haware">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=haware">
-						<img src="https://mdl.miraag.com/models/logo/haware/haware.png" alt="Haware">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="M F Hussain Painting">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=mfhussainpainting">
-						<img src="https://mdl.miraag.com/models/logo/mfhussainpainting/mfhussainpainting.png" alt="M F Hussain Painting">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Prashant Damle">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=prashantdamle">
-						<img src="https://mdl.miraag.com/models/logo/prashantdamle/prashantdamle.png" alt="Prashant Damle">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Savlon">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=savlon">
-						<img src="https://mdl.miraag.com/models/logo/savlon/savlon.png" alt="Savlon">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Zee Marathi Serial Agga Bai Sasubai">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=zeemarathiserialaggabaisasubai">
-						<img src="https://mdl.miraag.com/models/logo/zeemarathiserialaggabaisasubai/zeemarathiserialaggabaisasubai.png" alt="Zee Marathi Serial Agga Bai Sasubai">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Mc Donalds">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=mcdonalds">
-						<img src="https://mdl.miraag.com/models/logo/mcdonalds/mcdonalds.png" alt="Mc Donalds">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="KFC">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=kfc">
-						<img src="https://mdl.miraag.com/models/logo/kfc/kfc.png" alt="KFC">
-					</a>
-				</div>
-			</div>
-			
-			<div class="gallery-item" name="Burger King">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=burgerking">
-						<img src="https://mdl.miraag.com/models/logo/burgerking/burgerking.png" alt="Burger King">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Pizza Hut">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=pizzahut">
-						<img src="https://mdl.miraag.com/models/logo/pizzahut/pizzahut.png" alt="Pizza Hut">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Swiggy">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=swiggy">
-						<img src="https://mdl.miraag.com/models/logo/swiggy/swiggy.png" alt="Swiggy">
-					</a>
-				</div>
-			</div>
-			<div class="gallery-item" name="Zomato">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=zomato">
-						<img src="https://mdl.miraag.com/models/logo/zomato/zomato.png" alt="Zomato">
-					</a>
-				</div>
-			</div>
-			
-			<div class="gallery-item" name="Marie Gold">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=mariegold">
-						<img src="https://mdl.miraag.com/models/logo/mariegold/mariegold.png" alt="Marie Gold">
-					</a>
-				</div>
-			</div>
-			
 		</div>
 	</div>
 </section>
-
-
-  
-  
   
 </form>
 
@@ -417,13 +130,60 @@ function autocomplete(inp, arr) {
   });
 }
 
-/*An array containing all the country names in the world:*/
-//var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
-var markers = ["MNS","Google","Coca-Cola","MNS card","Crocin","Haware","M F Hussain Painting","Prashant Damle","Savlon","Zee Marathi Serial Agga Bai Sasubai", "Mc Donalds", "KFC", "Marie Gold", "Burger King", "Pizza Hut", "Swiggy", "Zomato"]
+/*An array of marker names*/
+var markers = []; //["MNS","Google","Coca-Cola","MNS card","Crocin","Haware","M F Hussain Painting","Prashant Damle","Savlon","Zee Marathi Serial Agga Bai Sasubai", "Mc Donalds", "KFC", "Marie Gold", "Burger King", "Pizza Hut", "Swiggy", "Zomato"]
 
+//displayname, logoname
+var markers_json = {
+	markers : [
+		{name: "MNS", logo: "mns"},
+		{name: "Google", logo: "google"},
+		{name: "Coca-Cola", logo: "cocacola"},
+		{name: "MNS card", logo: "cardmns"},
+		{name: "Crocin", logo: "crocin"},
+		{name: "Haware", logo: "haware"},
+		{name: "M F Hussain Painting", logo: "mfhussainpainting"},
+		{name: "Prashant Damle", logo: "prashantdamle"},
+		{name: "Savlon", logo: "savlon"},
+		{name: "Zee Marathi Serial Agga Bai Sasubai", logo: "zeemarathiserialaggabaisasubai"},
+		{name: "Mc Donalds", logo: "mcdonalds"},
+		{name: "KFC", logo: "kfc"},
+		{name: "Marie Gold", logo: "mariegold"},
+		{name: "Burger King", logo: "burgerking"},
+		{name: "Pizza Hut", logo: "pizzahut"},
+		{name: "Swiggy", logo: "swiggy"},
+		{name: "Zomato", logo: "zomato"}
+	]
+}
 
+document.addEventListener("DOMContentLoaded", function() {
+	let galleryitemhtml = "";
+	let gallerycontainerelem = document.getElementById('gallerycontainer');
+	let name = "", logo = "";
+	const e = document.createElement("template");
+	for(i=0;i<markers_json.markers.length;i++) {
+		//console.log(markers_json.markers[i]);
+		name = markers_json.markers[i].name
+		logo = markers_json.markers[i].logo
+		markers.push(markers_json.markers[i].name);
+		galleryitemhtml = `
+			<div class="gallery-item" name="` + name + `">
+				<div class="gallery-item-inner">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=` + logo + `">
+						<img src="https://mdl.miraag.com/models/logo/` + logo + `/` + logo + `.png" alt="` + name + `">
+					</a>
+				</div>
+			</div>
+			`
+		e.innerHTML = galleryitemhtml.trim();
+		const s = e.content.firstChild;
+		gallerycontainerelem.appendChild(s);			
+	}
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), markers);
+});
+
+
 </script>
 
 
