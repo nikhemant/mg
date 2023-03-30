@@ -1,0 +1,106 @@
+{
+  "defaultanimation":"property: rotation; dur: 15000; easing: linear; loop: true;",
+  "defaultposition": "0 0 0",
+  "comments": "name-n, path-p; videofile-v;",	
+  "0": {
+	"n": "Elephant",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "elephant.mp4"
+  },
+  "1": {
+	"n": "Camel",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "camel.mp4"
+  },
+  "2": {
+	"n": "Rhinoceros",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "rhino.mp4"
+  },
+  "3": {
+	"n": "Tiger",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "tiger.mp4"
+  },
+  "4": {
+	"n": "Zebra",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "zebra.mp4"
+  },
+  "5": {
+	"n": "Bear",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "bear.mp4"
+  },
+  "6": {
+	"n": "Deer",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "deer.mp4"
+  },
+  "7": {
+	"n": "Lion",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "lion.mp4"
+  },
+  "8": {
+	"n": "Giraffe",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "giraffe.mp4"
+  },
+  "9": {
+	"n": "Hippopotamus",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "hippopotamus.mp4"
+  },
+  "10": {
+	"n": "Monkey",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "monkey.mp4"
+  },
+  "11": {
+	"n": "Wolf",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "wolf.mp4"
+  },
+  "12": {
+	"n": "Fox",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "fox.mp4"
+  }, 
+  
+  
+  
+  
+  
+  
+  "13": {
+	"n": "Kangaroo",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "kangaroo.mp4"
+  },
+  "14": {
+	"n": "Snake",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "snake.mp4"
+  },
+  "15": {
+	"n": "Crocodile",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "crocodile.mp4"
+  },
+  "16": {
+	"n": "Horse",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "horse.mp4"
+  },
+  "17": {
+	"n": "Cheetah",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "cheetah.mp4"
+  },
+  "18": {
+	"n": "Tortoise",
+	"p": "https://mdl.miraag.com/models/fc/animals/",
+	"v": "tortoise.mp4"
+  }
+}		
