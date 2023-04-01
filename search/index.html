@@ -192,9 +192,9 @@ autocomplete(document.getElementById("myInput"), markers);
 
 
 <script>
-const galleryItems = document.querySelectorAll(".gallery-item");
 
 function fnfilterImages(val) {
+	const galleryItems = document.querySelectorAll(".gallery-item");
 	 const filterValue = val;
 	 galleryItems.forEach((item) =>{
 	   //if(item.classList.contains(filterValue) || filterValue === 'all'){
@@ -210,6 +210,7 @@ function fnfilterImages(val) {
  }
  
 function showAllImages() {
+	const galleryItems = document.querySelectorAll(".gallery-item");
 	 galleryItems.forEach((item) =>{
 		item.classList.remove("hide");
 		 item.classList.add("show");
