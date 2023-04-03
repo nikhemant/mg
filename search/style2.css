@@ -131,6 +131,10 @@ img{
 	width: 100%;
   border: 3px solid #d4dad9;
 }
+.gallery .gallery-item-inner img:hover{
+	width: 100%;
+  border: 3px solid #000000;
+}
 .gallery .gallery-item.show{
 	animation: fadeIn 0.5s ease;
 }
