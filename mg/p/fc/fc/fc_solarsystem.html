@@ -1,0 +1,348 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="../../../js/aframe.min.js"></script>
+    <script src="../../../js/mgar.js"></script>
+    <script src="../../../js/aframe-extras.min.js"></script>
+	<style>
+    .bottomcontainer { position: absolute; bottom: 0; left: 0; width: 100%; height: 10%; display: flex; justify-content: center; align-items: center; z-index: 10;}
+    .rightsidecontainer { position: absolute; top: 5%; right: 3%; width: 10%; height: 10%; display: block; justify-content: center; align-items: center; z-index: 10;}
+	.centercontainer { position: absolute; top: 40%; left: 0; width: 100%; height: 30%; display: flex; justify-content: center; align-items: center; z-index: 10;}
+    .buttons { padding: 0.25em; border-radius: 4px; border: none; background: white; color: black; width: 4em; height: 2em; }
+	.playimg { background-image: url(../../../imgs/mute.png); background-repeat: no-repeat; align-items: center; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
+	.pauseimg { background-image: url(../../../imgs/unmute.png); background-repeat: no-repeat; align-items: center; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
+	.incscale { background-image: url(../../../imgs/plus.png); background-repeat: no-repeat; align-items: center; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
+	.decscale { background-image: url(../../../imgs/minus.png); background-repeat: no-repeat; align-items: center; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
+	.spell { background-image: url(../../../imgs/spell.png); background-repeat: no-repeat; align-items: center; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
+	.spellfont { font-size: 5em; color: yellow; }
+ 	</style>
+<script>
+const params = (new URL(location)).searchParams; //get query strings
+let mdlmetaf = "p_mdlmeta_solarsystem.json";  
+///************************************************************
+///************************************************************
+///************************************************************
+let mdlloopy = "0"; //loop on y-axis
+let bgSound = new Audio(); //audio to play
+//let divbottom = document.getElementById("divbottom");
+
+AFRAME.registerComponent('mdl-loaded', {
+    init: function () {
+		let objentity = this.el;
+		// Wait for model to load.
+		objentity.addEventListener('model-loaded', (objentity) => {
+		console.log(objentity.srcElement.id + " mdl-loaded regcomp");
+		divbottom.innerText=objentity.srcElement.id + " mdl-loaded regcomp";	
+			/*objentity.detail.model.traverse(n => { if ( n.isMesh ) {
+				n.castShadow = true; 
+				n.receiveShadow = true;
+				if(n.material.map) n.material.map.anisotropy = 1;
+				n.material.opacity = 1;
+				n.material.depthWrite = !n.material.transparent;
+			  }});*/
+        });
+    }
+});
+
+AFRAME.registerComponent('target-foundlost', {
+    init: function () {	
+		let targetentity = this.el;
+		//target found event
+		targetentity.addEventListener('targetFound', (targetentity) => {
+			const targetid = targetentity.srcElement.id;
+			console.log(targetid + " target found regcomp");
+			divbottom.innerText=targetid + " target found regcomp";
+			//load the model based on the target
+			const targetnum = targetid.split('-')[1];
+			objentityid = "objentity-" + targetnum;
+			let objmdl = document.getElementById(objentityid);
+			if(objmdl.getAttribute("obj-model")  == null && objmdl.getAttribute("gltf-model")  == null) {
+				loadMdl(mdlmetaf, targetnum); 
+			}
+			//load sound which is set as a user attribute "mdlsound" in loadMdl funtion 
+			setsound(objmdl);			
+			document.getElementById('divscanning').classList.add("hidden");		 
+		});
+		//target lost event
+		targetentity.addEventListener('targetLost', (targetentity) => {
+			console.log(targetentity.srcElement.id + " target lost regcomp");
+			divbottom.innerText=targetentity.srcElement.id + " target lost regcomp";
+			document.getElementById('divscanning').classList.remove("hidden");	
+		});
+		/*
+		targetentity.addEventListener("click", (targetentity) => {
+			console.log(targetentity.srcElement.id + " obj clicked");
+			divbottom.innerText=targetentity.srcElement.id + " obj clicked";
+		});
+		*/
+    }
+});
+/*
+0-Sun 1-Moon 2-Mercury 
+*/
+</script>
+  </head>
+  <body>
+	<div id="divbottom" class="bottomcontainer"> bottom div test </div>
+	<div id="divspelltext" class="centercontainer spellfont"> </div>
+	<div class="rightsidecontainer">
+		<button id="btnplaypause" class="buttons playimg" onclick="PlayPause()" style="height:37px;width:37px"></button> <br/>
+		<button id="btnscale" class="buttons incscale" onclick="scale()" style="height:37px;width:37px"></button> <br/>
+		<button id="btnspell" class="buttons spell" onclick="spell()" style="height:37px;width:37px"></button> 
+	</div>
+	
+    <a-scene id="elscene" mgar-image="imageTargetSrc: https://mdl.miraag.com/models/fc/solarsystem/fc_solarsystem.mg; maxTrack: 3; uiScanning:no; autoStart: true;" color-space="sRGB" renderer="colorManagement: false, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity id="target-0" mgar-image-target="targetIndex: 0" target-foundlost>	 
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-0" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-1" mgar-image-target="targetIndex: 1" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-1" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-2" mgar-image-target="targetIndex: 2" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-2" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-3" mgar-image-target="targetIndex: 3" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-3" mdl-loaded></a-entity>
+      </a-entity>
+	  
+      <a-entity id="target-4" mgar-image-target="targetIndex: 4" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-4" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-5" mgar-image-target="targetIndex: 5" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-5" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-6" mgar-image-target="targetIndex: 6" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-6" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-7" mgar-image-target="targetIndex: 7" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-7" mdl-loaded></a-entity>
+      </a-entity>
+	  
+      <a-entity id="target-8" mgar-image-target="targetIndex: 8" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-8" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-9" mgar-image-target="targetIndex: 9" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-9" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-10" mgar-image-target="targetIndex: 10" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-10" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-11" mgar-image-target="targetIndex: 11" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-11" mdl-loaded></a-entity>
+      </a-entity>
+	  
+      <a-entity id="target-12" mgar-image-target="targetIndex: 12" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-12" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-13" mgar-image-target="targetIndex: 13" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-13" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-14" mgar-image-target="targetIndex: 14" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-14" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-15" mgar-image-target="targetIndex: 15" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-15" mdl-loaded></a-entity>
+      </a-entity>
+	  
+      <a-entity id="target-16" mgar-image-target="targetIndex: 16" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-16" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-17" mgar-image-target="targetIndex: 17" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-17" mdl-loaded></a-entity>
+      </a-entity>
+      <a-entity id="target-18" mgar-image-target="targetIndex: 18" target-foundlost>
+        <a-plane color="gray" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
+		<a-entity id="objentity-18" mdl-loaded></a-entity>
+      </a-entity>
+    </a-scene>
+		
+		<div id="divscanning"class="mgar-ui-overlay mgar-ui-scanning">
+		  <div class="scanning">
+			<div class="inner">
+			  <div class="scanline"/>
+			</div>
+		  </div>
+		</div>
+  </body>
+  
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	mdlmetaf = params.has('mdlmetaf')?params.get('mdlmetaf'):mdlmetaf;
+	mdlloopy = params.has('mdlloopy')?params.get('mdlloopy'):mdlloopy;
+});	
+
+async function loadMdl(mdlmetaf, objentitynum){
+	const jsonData = await getMdlMetadataFromApi(mdlmetaf, objentitynum).catch((response) => { console.log(response.status, response.statusText, "fetchloadjsonfunctionfailed"); }); //gets single model metadata
+	setMdlParams(jsonData, "objentity-" + objentitynum, objentitynum);
+}
+
+function PlayPause()
+{
+	let el = document.getElementById("btnscale");
+	if(el.value != "") {
+		let el = document.getElementById("btnplaypause");
+		if (el.classList.contains("playimg")) {
+		  el.classList.remove("playimg");
+		  el.classList.add("pauseimg");
+		  bgSound.play();
+		} else {
+		  el.classList.remove("pauseimg");
+		  el.classList.add("playimg");
+		  bgSound.pause(); 
+		}
+	}
+}
+
+function scale() {
+	let el = document.getElementById("btnscale");
+	if(el.value != "") {
+		objmdl = document.getElementById(el.value);
+		if (el.classList.contains("incscale")) {
+		  el.classList.remove("incscale");
+		  el.classList.add("decscale");	  	  
+		  //scale * 2
+		  let mdlscale = (objmdl.getAttribute("scale").x * 2) + " " + (objmdl.getAttribute("scale").y * 2) + " " + (objmdl.getAttribute("scale").z * 2) ;
+		  objmdl.setAttribute("scale", mdlscale);
+		} else {
+		  el.classList.remove("decscale");
+		  el.classList.add("incscale");
+		  //scale / 2
+		  let mdlscale = (objmdl.getAttribute("scale").x / 2) + " " + (objmdl.getAttribute("scale").y / 2) + " " + (objmdl.getAttribute("scale").z / 2) ;
+		  objmdl.setAttribute("scale", mdlscale);
+		}
+		divbottom.innerText = "scale";
+	}
+}
+
+async function spell() {
+	let elbtnspell = document.getElementById("btnspell");
+	if(elbtnspell.value != "") {
+		divbottom.innerText = elbtnspell.value + "spell";
+		let spelltextarr = elbtnspell.value.split('');
+		let displaytext = "";
+		elbtnspelltext = document.getElementById("divspelltext");
+		for(index in spelltextarr) {
+			displaytext += spelltextarr[index];
+			elbtnspelltext.innerText = displaytext;
+			await sleep(500);
+		}
+	}
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//set model parameters
+function setMdlParams(data, objentityid, objentitynum) {		
+	const mdlsobj=data;
+	const mdlcode=objentitynum;
+	let mdlname = mdlsobj[mdlcode].n; //name of model to spell
+	let mdlfilepath = mdlsobj[mdlcode].p;
+	let mdlobj = mdlfilepath + mdlsobj[mdlcode].o;
+	let mdlmtl = mdlfilepath + mdlsobj[mdlcode].m;
+	let mdlpath = "obj: url(" + mdlobj + "); mtl: url(" + mdlmtl + ")";
+	let mdlsoundfilename = mdlsobj[mdlcode].s;
+	let mdlscale = mdlsobj[mdlcode].k;
+	let mdlrotation = mdlsobj[mdlcode].r;
+	let mdlanimation = mdlsobj["defaultanimation"];// + "to: " + mdlsobj[mdlcode].a; //only "to" param changes
+	let animationfrom = mdlsobj[mdlcode].a;
+	let animationto = mdlsobj[mdlcode].a;
+	let mdlposition = mdlsobj["defaultposition"];
+	if(mdlsobj[mdlcode].po) { mdlposition = mdlsobj[mdlcode].po; } //read position if defined
+	if(mdlsobj[mdlcode].a == "") { mdlloopy = 0; mdlanimation = ""; }
+	
+	if(params.has('scale')) { mdlscale = params.get('scale').replace(new RegExp(":", 'g'), " "); }
+	if(params.has('position')) { mdlposition = params.get('position').replace(new RegExp(":", 'g'), " "); }
+	if(params.has('rotation')) { mdlrotation = params.get('rotation').replace(new RegExp(":", 'g'), " "); } 
+	if(params.has('animationfrom')) { animationfrom = params.get('animationfrom').replace(new RegExp(":", 'g'), " "); } 
+	if(params.has('animationto')) { animationto = params.get('animationto').replace(new RegExp(":", 'g'), " "); } 
+	mdlanimation = mdlsobj["defaultanimation"] + "from: " + animationfrom + "; to: " + animationto; 
+	if(params.has('mdlloopy')) { mdlloopy = params.get('mdlloopy'); }
+	
+	mdlanimation = mdlsobj[mdlcode].a.startsWith("property:")?mdlsobj[mdlcode].a:mdlanimation; //full animation provided for individual model
+	
+	objmdl = document.getElementById(objentityid);
+	//objmdl.getAttribute("obj-model") 
+	if( mdlsobj[mdlcode].m == "") { //not obj but glb/gltf
+		mdlpath = "url(" + mdlobj + ")"; 
+		objmdl.setAttribute("gltf-model", mdlpath); 
+		objmdl.setAttribute("animation-mixer", ""); 
+	} else { 
+		objmdl.setAttribute("obj-model", mdlpath);
+	}		
+	objmdl.setAttribute("scale", mdlscale);
+	objmdl.setAttribute("rotation", mdlrotation);
+	objmdl.setAttribute("position", mdlposition);
+	if(mdlloopy == "1") { objmdl.setAttribute("animation", mdlanimation); }
+
+	//set object specific attributes in user defined attributes				
+	let soundfilepath = mdlsoundfilename.startsWith("http")?mdlsoundfilename:mdlfilepath + mdlsoundfilename; //do not join path if full path is given
+	objmdl.setAttribute("mdlname", mdlname);
+	objmdl.setAttribute("mdlsound", soundfilepath);
+	
+	setsound(objmdl);
+}
+
+function setsound(objmdl) {
+	let elspell = document.getElementById("btnspell");
+	elspell.value = objmdl.getAttribute("mdlname");
+	divbottom.innerText = elspell.value;
+	document.getElementById('btnscale').value = objentityid;
+	
+	document.getElementById("divspelltext").innerText = "";
+	
+	let elsound = document.getElementById("btnplaypause");
+	elsound.classList.remove("pauseimg");
+	elsound.classList.add("playimg");
+	bgSound.pause(); 
+	
+	bgSound = new Audio(objmdl.getAttribute("mdlsound"));
+	bgSound.loop = true;
+}
+
+	/*API - begin****************/
+	//this block should be inside a js file/module to be edited independently
+	async function getMdlMetadataFromApi(mdlmetaf, mdlcode){
+		let apilink = mdlmetaf;
+		let mdlDataJson = await fetch(apilink) 
+		  .then((res) => { return res.json(); })
+		  .catch((response) => { console.log(response.status, response.statusText, "fetchmodelapifailed"); });	
+		const seljson = getselmdljson(mdlDataJson, mdlcode);
+		return seljson;
+		
+	}
+	
+	//get selected model meta from full list
+	function getselmdljson(data, mdlcode) {
+		let singleseljson = {}
+		singleseljson["defaultanimation"] = data["defaultanimation"];
+		singleseljson["defaultposition"] = data["defaultposition"];
+		singleseljson[mdlcode] = data[mdlcode];
+		
+		return singleseljson;	
+	}
+	/*API - end****************/
+</script>
+</html>
