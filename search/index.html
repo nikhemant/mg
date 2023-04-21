@@ -157,24 +157,28 @@ var markers_json = {
 		{name: "Rege Movie", logo: "regemovie"},
 		{name: "Pawankhind Movie", logo: "pawankhindmovie"},
 		{name: "Maharashtra Shahir Movie", logo: "maharashtrashahirmovie"},
-		{name: "Marol Vibes", logo: "marolvibes"}
+		{name: "Marol Vibes", logo: "marolvibes", height: "0.7", width: "1"}
 	]
 }
 
 document.addEventListener("DOMContentLoaded", function() {
 	let galleryitemhtml = "";
 	let gallerycontainerelem = document.getElementById('gallerycontainer');
-	let name = "", logo = "";
+	let name = "", logo = "", width = "", height = "";
 	const e = document.createElement("template");
 	for(i=0;i<markers_json.markers.length;i++) {
 		//console.log(markers_json.markers[i]);
-		name = markers_json.markers[i].name
-		logo = markers_json.markers[i].logo
+		name = markers_json.markers[i].name;
+		logo = markers_json.markers[i].logo;
+		w = markers_json.markers[i].width;
+		h = markers_json.markers[i].height;		
+		width = w != null?w:1;
+		height = h != null?h:1;
 		markers.push(markers_json.markers[i].name);
 		galleryitemhtml = `
 			<div class="gallery-item" name="` + name + `">
 				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=` + logo + `">
+					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=` + logo + `&width=` + width + `&height=` + height + `">
 						<img src="https://mdl.miraag.com/models/logo/` + logo + `/` + logo + `.png" alt="` + name + `">
 					</a>
 				</div>
