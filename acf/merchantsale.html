@@ -1,0 +1,122 @@
+<html>
+<head>
+<script>
+
+</script>
+</head>
+<body>
+	<img id="divGenuine" width="100" height="100" src="original.png" style="display:none;"/>
+	<img id="divFake" width="100" height="100" src="fake.png" style="display:none;"/>
+	<br>
+	<label>Batch Number:</label><br>
+	<input id="txtbatch" type="text" placeholder="" size = "50" disabled /><br>
+	<label>Merchant Details:</label><br>
+	<input id="txtmerchant" type="text" placeholder="" size = "50" disabled /><br>
+	<label>Owner Details:</label><br>
+	<input id="txtowner" type="text" placeholder="" size = "50"/><br>
+	<hidden id="hdnval" value="" />
+	<button id="btnGenerate" onclick="fnTransfer()">Transfer Ownership to Customer</button><br><br>
+</body>
+<script>
+	
+const params = (new URL(location)).searchParams; //get query strings	
+const glbkey = params.get('k');
+const glbchksum = params.get('c');
+window.addEventListener('DOMContentLoaded', function() {
+	isGenuine();
+});
+
+function isGenuine() {
+	//set page params
+	if(params.has('k') && params.has('c')) { //key and checksum 
+		key = params.get('k'); //get key from query string
+		chksum = params.get('c'); //get checksum from query string
+		
+		//get value from api https://mgc.nikhemant.workers.dev/?k=[key]&c=[checksum]
+		let apilink = "https://mgc.nikhemant.workers.dev/?k=" + key + "&c=" + chksum
+		val = GetVal(apilink);
+	}
+	else { 
+		console.log("k and c parameter not provided in link");
+		alert("Please scan valid qr code"); 
+		document.body.innerHTML = "Please scan valid qr code";
+	}
+}
+
+async function GetVal(apilink){
+	//gets value for given key/checksum
+	const jsonData = await getValueFromApi(apilink).catch((response) => { console.log(response.status, response.statusText, "fetchloadjsonfunctionfailed"); }); 
+	//return jsonData;
+	//return JSON.parse(jsonData).v;
+	if(!jsonData.err) {
+		let val = jsonData.v;
+		document.getElementById('hdnval').value = val;
+		console.log(val);
+		//document.getElementById('txttohash').value = val;
+		document.getElementById('divGenuine').style.display = "block";
+		
+		let blkchn = val.split("|");
+		if(blkchn[0]) {document.getElementById('txtbatch').value = blkchn[0];}
+		if(blkchn[1]) {document.getElementById('txtmerchant').value = blkchn[1];}
+		if(blkchn[2]) {document.getElementById('txtowner').value = blkchn[2];}
+	} else {
+		console.log(jsonData.err);
+		document.getElementById('divFake').style.display = "block";
+	}
+	
+}
+
+async function getValueFromApi(apilink){
+	let valJson = await fetch(apilink) 
+	  .then((res) => { return res.json(); })
+	  .catch((response) => { console.log(response.status, response.statusText, "fetchapifailed"); });
+	return valJson;	
+}
+
+
+function fnTransfer() {
+	//set page params
+	if(params.has('k') && params.has('c')) { //key and checksum 
+		key = params.get('k'); //get key from query string
+		chksum = params.get('c'); //get checksum from query string
+		customer = document.getElementById('txtowner').value
+		if (customer === "") {alert("Enter Customer Info"); return;}
+		val = document.getElementById('hdnval').value + "|" + customer;
+		//get value from api https://mgc.nikhemant.workers.dev/?k=[key]&c=[checksum]&val=[]
+		let apilink = "https://mgc.nikhemant.workers.dev/?k=" + key + "&c=" + chksum + "&v=" + val
+		val = SetVal(apilink);
+	}
+	else { 
+		console.log("k and c parameter not provided in link");
+		alert("Please scan valid qr code"); 
+		document.body.innerHTML = "Please scan valid qr code";
+	}
+}
+
+
+async function SetVal(apilink){
+	//gets value for given key/checksum
+	const jsonData = await setValueFromApi(apilink).catch((response) => { console.log(response.status, response.statusText, "fetchloadjsonfunctionfailed"); }); 
+	//return jsonData;
+	//return JSON.parse(jsonData).v;
+	if(!jsonData.err) {
+		let key = glbkey;
+		let chksum = glbchksum;
+		redirectlink = "readqr.html?k=" + key + "&c=" + chksum;
+		window.location.replace(redirectlink);
+	} else {
+		console.log(jsonData.err);
+		alert("error occured!");
+	}
+	
+}
+
+async function setValueFromApi(apilink){
+	let valJson = await fetch(apilink) 
+	  .then((res) => { return res.json(); })
+	  .catch((response) => { console.log(response.status, response.statusText, "fetchapifailed"); });
+	return valJson;	
+}
+
+</script>
+</html>
