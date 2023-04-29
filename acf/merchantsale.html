@@ -33,7 +33,7 @@ function isGenuine() {
 		chksum = params.get('c'); //get checksum from query string
 		
 		//get value from api https://mgc.nikhemant.workers.dev/?k=[key]&c=[checksum]
-		let apilink = "https://mgc.nikhemant.workers.dev/?k=" + key + "&c=" + chksum
+		let apilink = "https://mgc-hash.nikhemant.workers.dev/?k=" + key + "&c=" + chksum
 		val = GetVal(apilink);
 	}
 	else { 
@@ -58,7 +58,10 @@ async function GetVal(apilink){
 		let blkchn = val.split("|");
 		if(blkchn[0]) {document.getElementById('txtbatch').value = blkchn[0];}
 		if(blkchn[1]) {document.getElementById('txtmerchant').value = blkchn[1];}
-		if(blkchn[2]) {document.getElementById('txtowner').value = blkchn[2];}
+		if(blkchn[2]) {
+			document.getElementById('txtowner').value = blkchn[2]; 
+			document.getElementById('btnGenerate').style.display = "block";
+			}
 	} else {
 		console.log(jsonData.err);
 		document.getElementById('divFake').style.display = "block";
@@ -83,7 +86,7 @@ function fnTransfer() {
 		if (customer === "") {alert("Enter Customer Info"); return;}
 		val = document.getElementById('hdnval').value + "|" + customer;
 		//get value from api https://mgc.nikhemant.workers.dev/?k=[key]&c=[checksum]&val=[]
-		let apilink = "https://mgc.nikhemant.workers.dev/?k=" + key + "&c=" + chksum + "&v=" + val
+		let apilink = "https://mgc-hash.nikhemant.workers.dev/?k=" + key + "&c=" + chksum + "&v=" + val
 		val = SetVal(apilink);
 	}
 	else { 

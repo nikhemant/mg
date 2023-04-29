@@ -39,7 +39,7 @@ function isGenuine() {
 		chksum = params.get('c'); //get checksum from query string
 		
 		//get value from api https://mgc.nikhemant.workers.dev/?k=[key]&c=[checksum]
-		let apilink = "https://mgc.nikhemant.workers.dev/?k=" + key + "&c=" + chksum
+		let apilink = "https://mgc-hash.nikhemant.workers.dev/?k=" + key + "&c=" + chksum
 		val = GetVal(apilink);
 	}
 	else { 

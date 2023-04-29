@@ -1,0 +1,53 @@
+<html>
+<head>
+<script>
+
+//https://medium.com/gft-engineering/mac-and-hmac-simply-explained-with-javascript-snippets-555e2bf82de8
+async function hmacSha256Hex(secret, message) {
+  const enc = new TextEncoder("utf-8");
+  const algorithm = { name: "HMAC", hash: "SHA-256" };
+  const key = await crypto.subtle.importKey(
+    "raw",
+    enc.encode(secret),
+    algorithm,
+    false, ["sign", "verify"]
+  );
+  const hashBuffer = await crypto.subtle.sign(
+    algorithm.name, 
+    key, 
+    enc.encode(message)
+  );
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(
+      b => b.toString(16).padStart(2, '0')
+  ).join('');
+  return hashHex;
+}
+/*
+await hmacSha256Hex(
+  "key", 
+  "The quick brown fox jumps over the lazy dog"
+);*/
+//f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8
+
+async function fnGenerate() {
+	const key = document.getElementById('txtkey').value;
+	const texttohash = document.getElementById('txttohash').value;
+	const hashvalue = await hmacSha256Hex(
+		  key, 
+		  texttohash
+		);
+	document.getElementById('txthash').value = hashvalue;
+}
+
+</script>
+</head>
+<body>
+	<label>Key:</label><br>
+	<input id="txtkey" type="text" placeholder="Enter key (secret salt)" size = "50"/><br>
+	<label>Text to Hash:</label><br>
+	<textarea id="txttohash" placeholder="Enter Text to Hash" rows="4" cols="50"/></textarea><br>
+	<button id="btnGenerate" onclick="fnGenerate()">Generate</button><br><br>
+	<textarea id="txthash" type="text" rows="2" cols="50"/></textarea><br>			
+</body>
+</html>
