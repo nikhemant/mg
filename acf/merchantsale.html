@@ -8,7 +8,7 @@
 	<img id="divGenuine" width="100" height="100" src="original.png" style="display:none;"/>
 	<img id="divFake" width="100" height="100" src="fake.png" style="display:none;"/>
 	<br>
-	<label>Batch Number:</label><br>
+	<label>Product Serial Number:</label><br>
 	<input id="txtbatch" type="text" placeholder="" size = "50" disabled /><br>
 	<label>Merchant Details:</label><br>
 	<input id="txtmerchant" type="text" placeholder="" size = "50" disabled /><br>
@@ -61,6 +61,7 @@ async function GetVal(apilink){
 		if(blkchn[2]) {
 			document.getElementById('txtowner').value = blkchn[2]; 
 			document.getElementById('btnGenerate').style.display = "none";
+			document.getElementById('txtowner').disabled = "true";			
 			}
 	} else {
 		console.log(jsonData.err);
