@@ -12,11 +12,15 @@
 	<img id="divFake" width="100" height="100" src="fake.png" style="display:none;"/>
 	<br>
 	<label>Product Serial Number:</label><br>
-	<input id="txtbatch" type="text" placeholder="" size = "50" disabled /><br>
+	<input id="txtbatch" type="text" placeholder="" size="50" disabled /><br>
+	<label>Manufactured By:</label><br>
+	<input id="txtManu" type="text" placeholder="" size="50" disabled /><br>
+	<label>Imported By:</label><br>
+	<input id="txtImport" type="text" placeholder="" size="50" disabled /><br>
 	<label>Merchant Details:</label><br>
-	<input id="txtmerchant" type="text" placeholder="" size = "50" disabled /><br>
-	<label>Owner Details:</label><br>
-	<input id="txtowner" type="text" placeholder="" size = "50" disabled /><br><br>
+	<input id="txtmerchant" type="text" placeholder="" size="50" disabled /><br>
+	<label>End Owner Details:</label><br>
+	<input id="txtowner" type="text" placeholder="" size="50" disabled /><br><br>
 	
 	<button id="btnmerchantsale" onclick="redirectToMerchantsale()">Merchant Sale</button><br><br>
 </body>
@@ -66,9 +70,11 @@ async function GetVal(apilink){
 		
 		let blkchn = val.split("|");
 		if(blkchn[0]) {document.getElementById('txtbatch').value = blkchn[0];}
-		if(blkchn[1]) {document.getElementById('txtmerchant').value = blkchn[1];}
-		if(blkchn[2]) {
-			document.getElementById('txtowner').value = blkchn[2];
+		if(blkchn[1]) {document.getElementById('txtManu').value = blkchn[1];}
+		if(blkchn[2]) {document.getElementById('txtImport').value = blkchn[2];}
+		if(blkchn[3]) {document.getElementById('txtmerchant').value = blkchn[3];}
+		if(blkchn[4]) {
+			document.getElementById('txtowner').value = blkchn[4];
 			document.getElementById('btnmerchantsale').style.display = "none";
 		}
 	} else {
