@@ -1,0 +1,60 @@
+{
+  "defaultanimation":"property: rotation; dur: 15000; easing: linear; loop: true;",
+  "defaultposition": "0 0 0",
+  "comments": "name-n, path-p; objfilename-o; mtlfilename-m; soundfilename-s; scale-k; rotation-r; animation>to-a, prevmodelorder-pv; nextmodelorder-nx; position(opt)-po",	
+  "0": {
+	"n": "Sun",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "sun.mp4"
+  },
+  "1": {
+	"n": "Moon",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "moon.mp4"
+  },
+  "2": {
+	"n": "Mercury",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "mercury.mp4"
+  },
+  "3": {
+	"n": "Venus",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "venus.mp4"
+  },
+  "4": {
+	"n": "Earth",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "earth.mp4"
+  },
+  "5": {
+	"n": "Mars",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "mars.mp4"
+  },
+  "6": {
+	"n": "Jupiter",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "jupiter.mp4"
+  },
+  "7": {
+	"n": "Saturn",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "saturn.mp4"
+  },
+  "8": {
+	"n": "Uranus",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "uranus.mp4"
+  },
+  "9": {
+	"n": "Neptune",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "neptune.mp4"
+  }  ,
+  "10": {
+	"n": "Pluto",
+	"p": "https://mdl.miraag.com/models/fc/solarsystem/",
+	"v": "pluto.mp4"
+  }  
+}		
