@@ -1,0 +1,59 @@
+
+<html>
+  <head>
+  	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHEMPBCMQ0"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-FHEMPBCMQ0');
+	</script>	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+	<title>Miraag - AR Experiences - Election Demo</title>
+<!--	<meta content="Augmented Reality experiences for everyone" name="description">
+	<meta content="Augmented Reality demo" name="keywords"> -->
+
+    <script src="js/aframe.min.js"></script>
+    <script src="js/mgar.js"></script>
+    <script src="js/aframe-extras.min.js"></script>
+	<style>
+		.centercontainer { position: absolute; top: 25%; left: 10%; width: 90%; height: 50%; display: block; justify-content: center; align-items: center; z-index: 10;}
+		.form { padding: 1.0em; border-radius: 7px; border: none; background: white; opacity: 0.9; color: black; width: 80%; height: 100%; align-items: center; z-index: 10;}
+		
+		.bottomcontainer { position: absolute; bottom: 0; left: 0; width: 100%; height: 10%; display: flex; justify-content: center; align-items: center; z-index: 10;}
+		.buttons { padding: 0.25em; border-radius: 4px; border: none; background: white; color: black; width: 4em; height: 2em; }
+		.transparent { background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em; border-radius: 3.7em; }
+		
+		.rightsidecontainer { position: absolute; top: 5%; right: 3%; width: 10%; height: 10%; display: block; justify-content: center; align-items: center; z-index: 10;}
+		.playimg { background-image: url(imgs/mute.png); background-repeat: no-repeat; align-items: center; height:37px; width:37px; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
+		.pauseimg { background-image: url(imgs/unmute.png); background-repeat: no-repeat; align-items: center; height:37px; width:37px; background-color: rgba(200, 200, 200, 0.3); margin:0.5em; padding: 0.5em;}
+	</style>
+    <script src="js/mdlload.js"></script>
+  </head>
+  <body>
+  	<div id="divbottom" class="bottomcontainer">
+		
+	</div>
+	<div class="rightsidecontainer">
+		<button id="btnplaypause" class="buttons playimg" style="display:none;" onclick="PlayPause()" style=""></button> 
+		<img id="imgfingerup" src="imgs/finger_pointing_up.gif" style="height:37px; width:37px;" />
+	</div>
+		<!--
+	<div class="centercontainer" id="centercontainer">
+		<img id="imgtrackerguide" src="obma.png" width="200" height="200" style="opacity:0.2;"/>
+	</div> -->
+
+	<!-- Scene placeholder -->
+	
+		<div id="divscanning"class="mgar-ui-overlay mgar-ui-scanning">
+			<div class="scanning"><!--Every card has unique qr code-->
+				<div class="inner">
+				  <div class="scanline"/>
+				</div>
+			</div>
+		</div>
+  </body>
+</html>
