@@ -133,65 +133,48 @@ function autocomplete(inp, arr) {
 /*An array of marker names*/
 var markers = []; //["MNS","Google","Coca-Cola","MNS card","Crocin","Haware","M F Hussain Painting","Prashant Damle","Savlon","Zee Marathi Serial Agga Bai Sasubai", "Mc Donalds", "KFC", "Marie Gold", "Burger King", "Pizza Hut", "Swiggy", "Zomato"]
 
-//displayname, logoname
-var markers_json = {
-	markers : [
-		{name: "MNS", logo: "mns"},
-		{name: "Google", logo: "google"},
-		{name: "Coca-Cola", logo: "cocacola"},
-		{name: "MNS card", logo: "cardmns"},
-		{name: "Crocin", logo: "crocin"},
-		{name: "Haware", logo: "haware"},
-		{name: "M F Hussain Painting", logo: "mfhussainpainting"},
-		{name: "Prashant Damle", logo: "prashantdamle"},
-		{name: "Savlon", logo: "savlon"},
-		{name: "Zee Marathi Serial Agga Bai Sasubai", logo: "zeemarathiserialaggabaisasubai"},
-		{name: "Mc Donalds", logo: "mcdonalds"},
-		{name: "KFC", logo: "kfc"},
-		{name: "Marie Gold", logo: "mariegold"},
-		{name: "Burger King", logo: "burgerking"},
-		{name: "Pizza Hut", logo: "pizzahut"},
-		{name: "Swiggy", logo: "swiggy"},
-		{name: "Zomato", logo: "zomato"},
-		{name: "Ved Movie", logo: "vedmovie"},
-		{name: "Rege Movie", logo: "regemovie"},
-		{name: "Pawankhind Movie", logo: "pawankhindmovie"},
-		{name: "Maharashtra Shahir Movie", logo: "maharashtrashahirmovie"},
-		{name: "Marol Vibes", logo: "marolvibes", height: "0.7", width: "1"},
-		{name: "Bisleri", logo: "bisleri", height: "0.5", width: "1"},
-		{name: "Dolo  650", logo: "dolo650"},
-		{name: "Sanjay Narvekar", logo: "sanjaynarvekar"},
-		{name: "Nargis Dutt", logo: "nargisdutt"}
-	]
-}
-
 document.addEventListener("DOMContentLoaded", function() {
-	let galleryitemhtml = "";
-	let gallerycontainerelem = document.getElementById('gallerycontainer');
-	let name = "", logo = "", width = "", height = "";
-	const e = document.createElement("template");
-	for(i=0;i<markers_json.markers.length;i++) {
-		//console.log(markers_json.markers[i]);
-		name = markers_json.markers[i].name;
-		logo = markers_json.markers[i].logo;
-		w = markers_json.markers[i].width;
-		h = markers_json.markers[i].height;		
-		width = w != null?w:1;
-		height = h != null?h:1;
-		markers.push(markers_json.markers[i].name);
-		galleryitemhtml = `
-			<div class="gallery-item" name="` + name + `">
-				<div class="gallery-item-inner">
-					<a href="https://miraag.com/mg/p/logo/logo/logo.html?logo=` + logo + `&width=` + width + `&height=` + height + `">
-						<img src="https://mdl.miraag.com/models/logo/` + logo + `/` + logo + `.png" alt="` + name + `">
-					</a>
-				</div>
-			</div>
-			`
-		e.innerHTML = galleryitemhtml.trim();
-		const s = e.content.firstChild;
-		gallerycontainerelem.appendChild(s);			
-	}
+  fetch('./markers.json')
+  .then(response => {return response.json();})
+  .then(data => {     
+    let link = "https://miraag.net/m/l/l.html";
+    let imgpathlink = "https://mdl.miraag.com/models/logo/";
+    let galleryitemhtml = "";
+    let gallerycontainerelem = document.getElementById('gallerycontainer');
+    let id = "", name = "", logo = "", width = "", height = "", scale = "", rotation = "";
+    let arlink = "", imglink = "";
+    const e = document.createElement("template");
+    
+    //if "DoNotshowINgallery":"g" is not null then do not display 
+    let markersToDisplay = data.markers.filter(marker => marker.g == null || marker.g == ""); 
+    markersToDisplay.forEach(marker => {
+      //console.log(marker);
+                  
+      //"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Is3d":"d", "scaleif3d":"s","rotationif3d":"r"}
+      name = marker.n;
+      logo = marker.l;
+      id = marker.i;
+      imglink = imgpathlink + logo + "/" + logo + ".png";
+      arlink = link + "?i=" + id;
+
+      markers.push(marker.n);
+
+        galleryitemhtml = `
+        <div class="gallery-item" name="${name}">
+          <div class="gallery-item-inner">
+            <a href="${arlink}">
+              <img src="${imglink}" alt="${name}">
+            </a>
+          </div>
+        </div>
+        `
+      e.innerHTML = galleryitemhtml.trim();
+      const s = e.content.firstChild;
+      gallerycontainerelem.appendChild(s);
+
+    });  
+  });
+
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), markers);
 });
