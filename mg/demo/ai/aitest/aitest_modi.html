@@ -1,0 +1,145 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <script src="https://unpkg.com/merge-images"></script>
+https://github.com/lukechilds/merge-images
+https://watercss.kognise.dev/
+https://vincent7128.github.io/text-image/
+ 
+
+<link rel="stylesheet" href="water.css">
+<script src="merge-images.js"></script>
+<script src="text-image.js"></script>
+ -->
+ 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+<script src="https://unpkg.com/merge-images"></script>
+<script src="https://cdn.jsdelivr.net/npm/text-image/dist/text-image.js"></script>
+
+</head>
+
+<body>
+
+<h2>जागरूक नागरिक बना !</h2>
+        <form>
+            <label for="fullname">Full Name</label>
+            <input type="fullname" name="fullname" id="fullname" placeholder="पूर्ण नाव " size="37"/>
+            <label for="email"><b>Email</b></label>
+            <input type="email" name="email" id="email" placeholder="ई-मेल " size="37"/>
+            <label for="phoneno">Mobile Number</label>
+            <input type="phoneno" name="phoneno" id="phoneno" placeholder="मोबाइल नंबर " size="37"/>
+            <label>Complaint/Suggestion:</label>
+            <div>
+                <input type="radio" id="Complaint" name="drone" value="Complaint" checked />
+                <label for="Complaint">Complaint</label>
+            </div>
+            <div>
+                <input type="radio" id="Suggestion" name="drone" value="Suggestion" />
+                <label for="Suggestion">Suggestion</label>
+            </div>
+            <label for="comments">Description</label>
+            <textarea name="comments" id="comments" placeholder="तक्रार / प्रस्ताव"></textarea>
+            <!--<input type="checkbox" name="remember" id="remember" checked>
+            <label for="remember">Remember me</label>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+            <input type="button" value="Submit">-->
+        </form>
+
+<input id="upload" type="file" onChange="handleImageUpload()" /><br>
+<img id="img" />
+<img id="imgtestresized" width="0" height = "0" />
+<img id="imgtext" width="0" height = "0" />
+<br>
+<button onclick="fn_mergeImages()"> Upload and Create </button>
+<button onclick="download()"> Download </button>
+
+<script> 
+
+function handleImageUpload() 
+{
+	if(document.getElementById("fullname").value == "") {
+		alert("Please enter name");
+		return;
+	}
+	
+	document.getElementById("imgtestresized").src = URL.createObjectURL(document.getElementById("upload").files[0]);
+	var style = {
+		font: 'serif',
+		align: 'center',
+		color: 'white',
+		size: 25,
+		background: 'black',
+		stroke: 1,
+		strokeColor: 'rgba(0, 0, 0, 1)'
+	};
+	var textImage1 = TextImage(style);
+	//var data = textImage1.toDataURL('राज ठाकरे  message');
+	var data = textImage1.toDataURL('\n' + document.getElementById("fullname").value);
+	document.getElementById("imgtext").src = data;
+}
+
+function fn_mergeImages() {
+
+	if(document.getElementById("imgtestresized").src) {
+
+		var target = new Image();
+		target.src = document.getElementById("imgtestresized").src;
+	  
+        mainCanvas = document.createElement("canvas");
+        mainCanvas.width = 1024;
+        mainCanvas.height = 500; //must be less than main poster image
+        var ctx = mainCanvas.getContext("2d");
+		ctx.drawImage(target, 0, 0, 300, 300);
+		document.getElementById("imgtestresized").src = mainCanvas.toDataURL();
+
+
+
+		mergeImages([
+		  { src: 'imgs/poster-modi.png', x: 0, y: 0 },
+		  { src: document.getElementById("imgtext").src, x: 90, y: 400 },
+		  { src: document.getElementById('imgtestresized').src, x: 80, y: 123 }
+		])
+		  .then(b64 => document.querySelector('img').src = b64);
+	} else {
+		alert("Please choose image.");
+		return;
+	}
+}
+
+
+function download(){
+	if(document.getElementById("img").src) {
+		var link = document.createElement('a');
+		link.download = document.getElementById("fullname").value + '_mns.png';
+		link.href = document.getElementById("img").src;
+		link.click();
+	} else {	
+		alert("Please choose image and click upload.");
+		return;
+	}
+}
+
+/*
+        mainCanvas = document.createElement("canvas");
+        mainCanvas.width = 1024;
+        mainCanvas.height = 500; //must be less than main poster image
+        var ctx = mainCanvas.getContext("2d");
+		ctx.drawImage(document.getElementById('imgtest'), 0, 0, 256, 256);		
+		var target = new Image();
+		target.src = mainCanvas.toDataURL();
+		target.id = "imgtestresized";
+		target.width = 0;
+		target.height = 0;
+
+		document.getElementById('result').appendChild(target);
+
+mergeImages([
+  { src: 'imgs/poster.png', x: 0, y: 0 },
+  { src: document.getElementById('imgtestresized').src, x: 111, y: 111 }
+])
+  .then(b64 => document.querySelector('img').src = b64);  
+*/  </script>
+</body>  
+  
