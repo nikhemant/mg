@@ -29,7 +29,7 @@
 		{"i":"42", "n": "Mohit Printers", "l": "mohitprintersjoker", "w": "1.2", "h": "0.7", "o":"l"},
 
 		{"i":"40", "n": "Nike", "l": "nike", "d": "1", "s": "10:10:10", "r": "90:0:0"},
-		{"i":"41", "n": "Mohit Printers", "l": "mohitprintersjoker", "d": "1", "s": "1:1:1", "r": "90:0:0"},
+		{"i":"41", "n": "Mohit Printers", "l": "mohitprintersjoker", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0"},
 		
 		{"i":"4", "g": "1", "n": "demo", "l": "ashelar"},
 		{"i":"5", "g": "1", "n": "demo", "l": "rajt", "w": "1", "h": "0.9"},
