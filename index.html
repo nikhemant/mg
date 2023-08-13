@@ -20,16 +20,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 	.topcontainer { position: absolute; top: 0; left: 0; width: 100%; height: 6%; display: flex; z-index: 10; }
-	.centercontainer { display: flex; justify-content: center; align-items: center; z-index: 10; position: relative;}
-	.centercontainer1 { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; opacity:0.2;}
+	.centercontainer { display: flex; justify-content: center; align-items: center; z-index: 10; position: relative; color: white;}
+	.centercontainer1 { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; opacity:1;}
+	
+	body {overflow: hidden;}
+	#vanta-canvas { width:100%; height:100vh;}
 </style>	
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+
 </head>
 <body>
-<div><br><hr/>
-	<div class="centercontainer"><h1>Welcome to Miraag! Please choose from below:</h1></div>
+<div id="vanta-canvas" class="centercontainer1"></div>
+<center><br><hr/>
+	<div class="centercontainer"><h1 class="centercontainer">Welcome to Miraag! Please choose from below:</h1></div>
 	<div class="centercontainer"><h1><a href="https://miraag.com/index1.html" onclick="redirectTo()"><u>Augmented Reality</u></a></h1></div>
 	<div class="centercontainer"><h1><a href="https://nikam.co" onclick="redirectTo()"><u>Data Forensics and Solution Development</u></a></h1></div>
-<div>
+<center>
 <!-- <div class="centercontainer1"><img style="width:100%;" id="s" src="imgs/bg.jpg" /></div> -->
 </body>
 <script>
@@ -42,5 +50,20 @@ function redirectTo() {
 	//window.location.replace("https://nikam.co");
 }
 
+</script>
+<script>
+VANTA.NET({
+  el: "#vanta-canvas",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  points: 12.00,
+  maxDistance: 21.00,
+  spacing: 16.00
+})
 </script>
 </html>
