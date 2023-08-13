@@ -29,7 +29,8 @@
 		{"i":"42", "n": "Mohit Printers", "l": "mohitprintersjoker", "w": "1.2", "h": "0.7", "o":"l", "b":"Download Catalogue", "bl":"https://mohitprinters.com/download-catalogue/"},
 
 		{"i":"40", "n": "Nike", "l": "nike", "d": "1", "s": "10:10:10", "r": "90:0:0", "a":"1"},
-		{"i":"41", "n": "Mohit Printers", "l": "mohitprintersjoker", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "b":"Download Catalogue", "bl":"https://mohitprinters.com/download-catalogue/"},
+		{"i":"41", "n": "Mohit Printers", "l": "mohitprintersjoker", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Download Catalogue", "bl":"https://mohitprinters.com/download-catalogue/"},
+		{"i":"41a", "n": "Mohit Printers", "l": "mohitprintersjoker", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"1", "b":"Download Catalogue", "bl":"https://mohitprinters.com/download-catalogue/"},
 		
 		{"i":"4", "g": "1", "n": "demo", "l": "ashelar"},
 		{"i":"5", "g": "1", "n": "demo", "l": "rajt", "w": "1", "h": "0.9"},
@@ -46,6 +47,6 @@
 		{"i":"16", "g": "1", "n": "demo", "l": "rajt2", "w": "0.9", "h": "0.5"}
 		
 	],
-	"labels":{"maxid":"41", "id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Orientation l for landscape p for potrait (default potrait)":"o", "Is3d":"d", "scaleif3d":"s","rotationif3d":"r", "animationId":"a"}
+	"labels":{"maxid":"41", "id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Orientation l for landscape p for potrait (default potrait)":"o", "Is3d":"d", "scaleif3d":"s","rotationif3d":"r", "animationId":"a", "animationSpeed":"as"}
 }
 
