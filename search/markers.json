@@ -32,6 +32,16 @@
 		{"i":"41", "n": "Mohit Printers", "l": "mohitprintersjoker", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Download Catalogue", "bl":"https://mohitprinters.com/download-catalogue/"},
 		{"i":"41a", "n": "Mohit Printers", "l": "mohitprintersjoker", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"1", "b":"Download Catalogue", "bl":"https://mohitprinters.com/download-catalogue/"},
 		
+		{"i":"43", "n": "Apple", "l": "_apple", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Apple", "bl":"https://apple.com/"},
+		{"i":"44", "n": "Unilever", "l": "_unilever", "d": "1", "s": "0.02:0.02:0.02", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Unilever", "bl":"https://unilever.com/"},
+		{"i":"45", "n": "P&G", "l": "_pandg", "d": "1", "s": "6:6:6", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit P&G", "bl":"https://pg.com/"},
+		{"i":"46", "n": "Amul", "l": "_amul", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Amul", "bl":"https://amul.com/"},
+		{"i":"47", "n": "Godrej", "l": "_godrej", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Godrej", "bl":"https://godrej.com/"},
+		{"i":"48", "n": "Dabur", "l": "_dabur", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Dabur", "bl":"https://dabur.com/"},
+		{"i":"49", "n": "ITC", "l": "_itc", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit ITC", "bl":"https://itcportal.com/"},
+		{"i":"50", "n": "Nestle", "l": "_nestle", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://nestle.com/"},
+
+		
 		{"i":"4", "g": "1", "n": "demo", "l": "ashelar"},
 		{"i":"5", "g": "1", "n": "demo", "l": "rajt", "w": "1", "h": "0.9"},
 		{"i":"6", "g": "1", "n": "demo", "l": "lukek", "w": "1", "h": "0.5"},
@@ -47,6 +57,6 @@
 		{"i":"16", "g": "1", "n": "demo", "l": "rajt2", "w": "0.9", "h": "0.5"}
 		
 	],
-	"labels":{"maxid":"41", "id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Orientation l for landscape p for potrait (default potrait)":"o", "Is3d":"d", "scaleif3d":"s","rotationif3d":"r", "animationId":"a", "animationSpeed":"as"}
+	"labels":{"maxid":"50", "id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Orientation l for landscape p for potrait (default potrait)":"o", "Is3d":"d", "scaleif3d":"s","rotationif3d":"r", "animationId":"a", "animationSpeed":"as"}
 }
 
