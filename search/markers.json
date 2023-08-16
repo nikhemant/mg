@@ -28,7 +28,7 @@
 		{"i":"39", "n": "demo_Dolo  650", "l": "dolo650"},
 		{"i":"42", "g": "1", "n": "demo_Mohit Printers", "l": "mohitprintersjoker", "w": "1.2", "h": "0.7", "o":"l", "b":"Download Catalogue", "bl":"https://mohitprinters.com/download-catalogue/"},
 
-		{"i":"40", "n": "demo_Nike", "l": "nike", "d": "1", "s": "10:10:10", "r": "90:0:0", "a":"1"},
+		{"i":"40", "n": "demo_Nike", "l": "nike", "d": "1", "s": "10:10:10", "r": "90:0:0", "a":"1", "as":"50", "b":"Visit Nike", "bl":"https://nike.com/"},
 		{"i":"41", "g": "1", "n": "Mohit Printers", "l": "mohitprintersjoker", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Download Catalogue", "bl":"https://mohitprinters.com/download-catalogue/"},
 		{"i":"41a", "g": "1", "n": "Mohit Printers", "l": "mohitprintersjoker", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"1", "b":"Download Catalogue", "bl":"https://mohitprinters.com/download-catalogue/"},
 		
@@ -36,11 +36,14 @@
 		{"i":"44", "n": "demo_Unilever", "l": "unilever", "d": "1", "s": "0.02:0.02:0.02", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Unilever", "bl":"https://unilever.com/"},
 		{"i":"45", "n": "demo_P&G", "l": "pandg", "d": "1", "s": "6:6:6", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit P&G", "bl":"https://pg.com/"},
 		{"i":"46", "n": "demo_Amul", "l": "amul", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Amul", "bl":"https://amul.com/"},
+		{"i":"46v", "n": "demo_Amul", "l": "amul", "d": "", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Amul", "bl":"https://amul.com/"},
 		{"i":"47", "n": "demo_Godrej", "l": "godrej", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Godrej", "bl":"https://godrej.com/"},
 		{"i":"48", "n": "demo_Dabur", "l": "dabur", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Dabur", "bl":"https://dabur.com/"},
+		{"i":"48v", "n": "demo_Dabur", "l": "dabur", "d": "", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Dabur", "bl":"https://dabur.com/"},
 		{"i":"49", "n": "demo_ITC", "l": "itc", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit ITC", "bl":"https://itcportal.com/"},
 		{"i":"50", "n": "demo_Nestle", "l": "nestle", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://nestle.com/"},
-		{"i":"51", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://nestle.com/"},
+		{"i":"51", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://www.balajiwafers.com/"},
+		{"i":"51v", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://www.balajiwafers.com/"},
 
 		
 		{"i":"4", "g": "1", "n": "demo", "l": "ashelar"},
