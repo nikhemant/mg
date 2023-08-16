@@ -40,6 +40,7 @@
 		{"i":"48", "n": "demo_Dabur", "l": "dabur", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Dabur", "bl":"https://dabur.com/"},
 		{"i":"49", "n": "demo_ITC", "l": "itc", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit ITC", "bl":"https://itcportal.com/"},
 		{"i":"50", "n": "demo_Nestle", "l": "nestle", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://nestle.com/"},
+		{"i":"51", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://nestle.com/"},
 
 		
 		{"i":"4", "g": "1", "n": "demo", "l": "ashelar"},
