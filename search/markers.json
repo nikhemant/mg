@@ -34,7 +34,7 @@
 		
 		{"i":"43", "n": "demo_Apple", "l": "apple", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Apple", "bl":"https://apple.com/"},
 		{"i":"44", "n": "demo_Unilever", "l": "unilever", "d": "1", "s": "0.02:0.02:0.02", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Unilever", "bl":"https://unilever.com/"},
-		{"i":"45", "n": "demo_P&G", "l": "pandg", "d": "1", "s": "6:6:6", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit P&G", "bl":"https://pg.com/"},
+		{"i":"45", "n": "demo_P&G", "l": "pandg", "d": "1", "s": "6:6:6", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit P&amp;G", "bl":"https://pg.com/"},
 		{"i":"46", "n": "demo_Amul", "l": "amul", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Amul", "bl":"https://amul.com/"},
 		{"i":"46v", "n": "demo_Amul", "l": "amul", "d": "", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Amul", "bl":"https://amul.com/"},
 		{"i":"47", "n": "demo_Godrej", "l": "godrej", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Godrej", "bl":"https://godrej.com/"},
@@ -42,8 +42,8 @@
 		{"i":"48v", "n": "demo_Dabur", "l": "dabur", "d": "", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Dabur", "bl":"https://dabur.com/"},
 		{"i":"49", "n": "demo_ITC", "l": "itc", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit ITC", "bl":"https://itcportal.com/"},
 		{"i":"50", "n": "demo_Nestle", "l": "nestle", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://nestle.com/"},
-		{"i":"51", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://www.balajiwafers.com/"},
-		{"i":"51v", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Nestle", "bl":"https://www.balajiwafers.com/"},
+		{"i":"51", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Balaji Wafers", "bl":"https://www.balajiwafers.com/"},
+		{"i":"51v", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Balaji Wafers", "bl":"https://www.balajiwafers.com/"},
 
 		
 		{"i":"4", "g": "1", "n": "demo", "l": "ashelar"},
