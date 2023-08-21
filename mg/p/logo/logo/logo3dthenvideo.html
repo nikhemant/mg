@@ -24,32 +24,29 @@
     <script src="../../../js/aframe.min.js"></script>
     <script src="../../../js/mgar.js"></script>
     <script src="../../../js/aframe-extras.min.js"></script>
-    <script src="../3dload.js"></script>
+    <script src="../3dthenvideoload.js"></script>
     <script src="../3danimation.js"></script>
 	<script src="../iphone-inline-video.min.js"></script>
 	<link rel="stylesheet" href="../style2.css"/>
   </head>
   <body>
-	<!--https://miraag.com/mg/p/logo/logo/logo3d.html?logo=nike&s=10:10:10&r=90:0:0-->
 	<div class="topcontainer"><img id="img_miraag_logo" src="../../../imgs/miraag_logo-sm.png" onclick="window.location.replace('https://www.miraag.com/index1.html')"/></div>
-	
+	<video id="videoplayback" muted src="" crossorigin playsinline></video>
   	<div id="divbottom" class="bottomcontainer">
-		<!-- <button id="btnlockAR" class="buttons lockimg" onclick="lockAR()" style=""></button> -->
+		<button id="btnlockAR" class="buttons lockimg" onclick="lockAR()"></button> 
 		<a id="btnLink" href="https://www.miraag.com"><button id="btnLinkbutton" style="background-color: #efefef; color: black; padding: 5px 10px;">Get Miraag!</button></a>		
 	</div>
 	<div class="centercontainer" id="centercontainer">
 		<img id="imgtrackerguide" src="" width="200" height="200" style="opacity:0.2;"/>
 	</div>
-	<!--
 	<div class="centercontainer" id="centercontainer_msg" style="display:none;">
 		<div style="background-color: white; width:120px;height:50px;opacity:0.9; padding:25;">Are you ready?. <br><button onclick="HideIMsgBox();">Yes!!</button></div>
 	</div>
-	
 	<div class="rightsidecontainer">
-		<button id="btnplaypause" class="buttons playimg" onclick="PlayPause()" style=""></button> 
+		<button id="btnplaypause" class="buttons playimg" onclick="PlayPause()"></button> 
 		<button id="btnautoplay" class="buttons play" onclick="AutoPlay()" style="display:none;"/></button>
 		<img id="imgfingerup" src="../../../imgs/finger_pointing_up.gif" style="height:37px; width:37px; display:none;" />
-	</div>	-->
+	</div>	
 	
 	<!-- Scene placeholder -->
 	
