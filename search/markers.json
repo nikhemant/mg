@@ -46,7 +46,7 @@
 		{"i":"51", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Balaji Wafers", "bl":"https://www.balajiwafers.com/"},
 		{"i":"51v", "n": "demo_Balaji Wafers", "l": "balajiwafers", "d": "", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Balaji Wafers", "bl":"https://www.balajiwafers.com/"},
 
-		{"i":"c1", "n": "Card Miraag HLN", "l": "cardmiraaghln", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Miraag", "bl":"https://www.miraag.com/"},
+		{"i":"c1", "n": "Card Miraag HLN", "l": "cardmiraaghln", "d": "2", "s": "0.007:0.007:0.007", "r": "90:0:0", "a":"2", "as":"20", "w": "0.9", "h": "0.5", "o":"l", "b":"Visit Miraag", "bl":"https://www.miraag.com/"},
 
 		
 		{"i":"4", "g": "1", "n": "demo", "l": "ashelar"},
