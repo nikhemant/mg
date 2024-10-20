@@ -12,6 +12,7 @@
 <form autocomplete="off">
   <div class="autocomplete">
     <input id="myInput" type="text" name="logoname" placeholder="Start typing to search..">
+    &nbsp;<span style="border: 1px solid; padding:5px"><img id="img_mic_clickable" src="mic.png"/></span>
   </div>
   <!--<input type="submit">--> 
   
@@ -209,6 +210,26 @@ function showAllImages() {
 		 item.classList.add("show");
 	 });
 } 
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/IDMNYU/p5.js-speech@0.0.3/lib/p5.speech.js"></script>
+<script>
+
+var speechRec = new p5.SpeechRec(); // speech recognition object (will prompt for mic access)
+speechRec.onResult = function () { // bind callback function to trigger when speech is recognized
+  document.getElementById("myInput").value = speechRec.resultString;
+  document.getElementById("myInput").dispatchEvent(new KeyboardEvent('input'));
+  speechRec.stop();
+}
+
+document.querySelector("#img_mic_clickable").addEventListener("click", function() {
+  console.log("in start");
+  speechRec.start();
+  document.getElementById("myInput").placeholder = "Speak Now...";
+});
+
 </script>
 
 </body>
