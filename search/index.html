@@ -221,6 +221,7 @@ var speechRec = new p5.SpeechRec(); // speech recognition object (will prompt fo
 speechRec.onResult = function () { // bind callback function to trigger when speech is recognized
   document.getElementById("myInput").value = speechRec.resultString;
   document.getElementById("myInput").dispatchEvent(new KeyboardEvent('input'));
+  document.getElementById("myInput").placeholder = "Start typing to search..";
   speechRec.stop();
 }
 
