@@ -5,7 +5,7 @@
 		{"i":"3", "n": "Nargis Dutt", "l": "nargisdutt", "w": "1", "h": "1.25"},
 		{"i":"17", "n": "MNS", "l": "mns"},
 		{"i":"18", "n": "Google", "l": "google", "b":"Visit Google", "bl":"https://www.google.com/"},
-		{"i":"19", "n": "Coca Cola", "l": "cocacola", "b":"Visit Coca-Cola", "bl":"https://www.coca-cola.com/"},
+		{"i":"19", "n": "Coca-Cola", "l": "cocacola", "b":"Visit Coca-Cola", "bl":"https://www.coca-cola.com/"},
 		{"i":"20", "n": "MNS card", "l": "cardmns"},
 		{"i":"21", "n": "Crocin", "l": "crocin", "b":"Visit Crocin", "bl":"https://www.crocin.com/"},
 		{"i":"22", "n": "Haware", "l": "haware"},
@@ -48,7 +48,14 @@
 		{"i":"52", "n": "Anupam Mars", "l": "anupamnasamars", "d": "2", "s": "0.2:0.2:0.2", "p": "0:0:0.5", "r": "90:0:0", "a":"", "as":"50", "b":"Visit Anupam Stationary", "bl":"https://anupamstationery.com/"},
 		{"i":"53", "n": "Ruchoks Raksha Bandhan", "l": "ruchoks1", "d": "1", "s": "0.01:0.01:0.01", "r": "90:0:0", "a":"2", "as":"50", "b":"Visit Ruchoks", "bl":"https://www.ruchoks.com/"},
 		{"i":"54", "n": "Toy fun", "l": "toyfun", "d": "1", "s": "6:6:6", "r": "90:0:0", "a":"2", "as":"50", "b":"Visit Toyfun", "bl":"https://www.toyfun.in/"},
-
+		{"i":"55", "n": "Jio", "l": "jio", "d": "1", "s": "0.23:0.23:0.23", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Jio", "bl":"https://jio.com/"},
+		{"i":"56", "n": "Tata", "l": "tata", "d": "1", "s": "0.25:0.25:0.25", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Tata", "bl":"https://tata.com/"},
+		{"i":"57", "n": "CCI", "l": "cci", "d": "1", "s": "0.25:0.25:0.25", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit CCI", "bl":"https://www.thecricketclubofindia.com/"},
+		{"i":"58", "n": "Starbucks", "l": "starbucks", "d": "1", "s": "0.33:0.33:0.33", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit Starbucks", "bl":"https://starbucks.com/"},
+		{"i":"59", "n": "HP Petroleum", "l": "hpl", "d": "1", "s": "0.27:0.27:0.27", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit HP", "bl":"https://www.hindustanpetroleum.com/"},
+		{"i":"60", "n": "HP Computer", "l": "hp", "d": "1", "s": "0.26:0.26:0.26", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit HP", "bl":"https://www.hp.com/"},
+		{"i":"61", "n": "Hero MotoCorp", "l": "hero", "d": "1", "s": "0.26:0.26:0.26", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit HP", "bl":"https://www.heromotocorp.com/"},
+		
 		{"i":"c1", "n": "Card Miraag HLN", "l": "cardmiraaghln", "d": "2", "s": "0.007:0.007:0.007", "r": "90:0:0", "a":"2", "as":"20", "at":"5000", "w": "0.9", "h": "0.5", "o":"l", "b":"Visit Miraag", "bl":"https://www.miraag.com/"},
 
 		
@@ -67,6 +74,6 @@
 		{"i":"16", "g": "1", "n": "demo", "l": "rajt2", "w": "0.9", "h": "0.5"}
 		
 	],
-	"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Orientation l for landscape p for potrait (default potrait)":"o", "Is3d":"d", "scaleif3d":"s", "positionif3d":"p", "rotationif3d":"r", "animationId":"a", "animationSpeed":"as", "animationTimer":"at", "btnText":"b", "btnLink":"bl"}
+	"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Orientation l for landscape p for potrait (default potrait)":"o", "Is3d 1-3d 2-3dthenvideo":"d", "scaleif3d":"s", "positionif3d":"p", "rotationif3d":"r", "animationId":"a", "animationSpeed":"as", "animationTimer":"at", "btnText":"b", "btnLink":"bl"}
 }
 
