@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- https://github.com/aframevr/aframe/blob/master/examples/docs/360-gallery/index.html -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VR Test with Camera movement</title>
+    <meta name="description" content="VR Test with Camera movement">
+    <!-- If running this example without a local copy of A-Frame, replace this next line with:
+    <script src="https://aframe.io/releases/<release_number>/aframe.min.js"></script>
+    -->
+    <script src="aframe-master.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.x.x/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.jss"></script>
+	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    
+    <!-- Image link template to be reused. -->
+    <script id="link" type="text/html">
+      <a-entity class="link"
+        geometry="primitive: plane; height: 1; width: 1"
+        material="shader: flat; src: ${thumb}"
+        sound="on: click; src: #click-sound"
+        event-set__mouseenter="scale: 1.2 1.2 1"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+        proxy-event="event: click; to: #image-360; as: fade"></a-entity>
+    </script>
+	<style>
+	.rightsidecontainer {
+		position: absolute;
+		top: 5%;
+		right: 3%;
+		width: 10%;
+		height: 10%;
+		display: block;
+		justify-content: center;
+		align-items: center;
+		z-index: 10;
+	}
+	.playimg {
+		/*background-image: url(imgs/mute.png);*/
+		background-repeat: no-repeat;
+		align-items: center;
+		height: 37px;
+		width: 47px;
+		background-color: rgba(200, 200, 200, 0.3);
+		margin: 0.5em;
+		padding: 0.5em;
+	}
+	</style>
+  </head>
+  <body>
+	<div class="rightsidecontainer">
+		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="movecanmera(119)">Front</button>
+		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="movecanmera(115)">Back</button> 
+		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="movecanmera(97)">Left</button>
+		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="movecanmera(100)">Right</button> 
+		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="movecanmera(113)">Up</button>
+		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="movecanmera(101)">Down</button> 
+	</div>
+    <a-scene>
+      <a-assets>
+		<a-asset-item id="peleModel_scissor_kick" src="scissor_kick.glb"></a-asset-item>
+		<a-asset-item id="peleModel_pass" src="pass.glb"></a-asset-item>
+		
+        <img id="museum" crossorigin="anonymous" src="museum.jpg">
+        <!-- <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg"> 
+        <img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+        <img id="cubes-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
+        <img id="sechelt-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
+        <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">-->
+
+      </a-assets>
+
+      <!-- 360-degree image. -->
+      <a-sky id="image-360" radius="10" src="#museum"
+             animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+             animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
+
+		<a-entity id="model" gltf-model="#peleModel_scissor_kick" position="0 -1 -2" scale="0.37 0.37 0.37" rotation="0 90 0" animation-mixer="clip: mixamo.com"></a-entity>
+		<a-entity id="model" gltf-model="#peleModel_pass" position="0.8 -1 1.5" scale="0.37 0.37 0.37" rotation="0 180 0" animation-mixer="clip: mixamo.com"></a-entity> 
+      <!-- Image links. 
+      <a-entity id="links" layout="type: line; margin: 1.5" position="-1.5 -1 -4">
+        <a-entity template="src: #link" data-src="#museum" data-thumb="#city-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
+      </a-entity>-->
+
+      <!-- Camera + cursor. -->
+      <a-entity id="camera" camera look-controls position="0 0 0">
+        <a-cursor
+          id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__mouseenter="_event: mouseenter; color: springgreen"
+          event-set__mouseleave="_event: mouseleave; color: black"
+          raycaster="objects: .link"></a-cursor>
+      </a-entity>
+    </a-scene>
+  </body>
+  <script>
+  
+	document.onkeypress = function (e) {
+		e = e || window.event;
+		//alert(e.keyCode);
+		// use e.keyCode
+/*
+		119 - w	-fromt
+		97 -a -left
+		115 - s -back
+		100 -d -right
+		113 - q - up
+		101 - e - down
+*/
+		movecanmera(e.keyCode);
+	};
+  //document.querySelector("#camera").object3D.position.set(1, 1, 1);
+  //document.querySelector("#camera").object3D.position.y=5
+
+	function movecanmera(keyCode) {
+		let x=0,y=0,z=0;
+		
+		switch(keyCode) {
+		  case 119:
+			console.log("w-front");
+			z = document.querySelector("#camera").object3D.position.z;
+			document.querySelector("#camera").object3D.position.z = z-1;
+			break;
+		  case 97:
+			console.log("a-left");
+			x = document.querySelector("#camera").object3D.position.x;
+			document.querySelector("#camera").object3D.position.x = x-1;
+			break;
+		  case 115:
+			console.log("s-back");
+			z = document.querySelector("#camera").object3D.position.z;
+			document.querySelector("#camera").object3D.position.z = z+1;
+			break;
+		  case 100:
+			console.log("d-right");
+			x = document.querySelector("#camera").object3D.position.x;
+			document.querySelector("#camera").object3D.position.x = x+1;
+			break;
+		  case 113:
+			console.log("d-up");
+			y = document.querySelector("#camera").object3D.position.y;
+			document.querySelector("#camera").object3D.position.y = y+1;
+			break;
+		  case 101:
+			console.log("d-down");
+			y = document.querySelector("#camera").object3D.position.y;
+			document.querySelector("#camera").object3D.position.y = y-1;
+			break;
+		  default:
+			// code block
+		}
+	}
+	
+  
+  </script>
+  
+</html>
