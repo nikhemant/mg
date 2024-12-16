@@ -14,18 +14,7 @@
     <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.jss"></script>
 	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-    
-    <!-- Image link template to be reused. 
-    <script id="link" type="text/html">
-      <a-entity class="link"
-        geometry="primitive: plane; height: 1; width: 1"
-        material="shader: flat; src: ${thumb}"
-        sound="on: click; src: #click-sound"
-        event-set__mouseenter="scale: 1.2 1.2 1"
-        event-set__mouseleave="scale: 1 1 1"
-        event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
-        proxy-event="event: click; to: #image-360; as: fade"></a-entity>		
-    </script>-->
+
 	<style>
 	.rightsidecontainer {
 		position: absolute;
@@ -53,33 +42,36 @@
   </head>
   <body>
 	<div class="rightsidecontainer">
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(119)">Forward -W</button>
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(97)">Left -A</button>
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(115)">Backward -S</button> 
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(100)">Right -D</button> 
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(113)">Up -Q</button>
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(101)">Down -E</button> 
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(90)">Zoom in -Z</button> 
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(122)">Zoom out -z</button> 
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(114)">Reset -R</button>
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(99)">Center -C</button> 
-		<!-- <button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(102)">... -F</button> 
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(120)">... -X</button> 
-		<button id="btnplaypause" class="buttons playimg" style="display: block;" onclick="processKeyPress(118)">... -V</button> -->
+		<button id="btnActionForward" class="buttons" style="display: block;" onclick="processKeyPress(119)">Forward -W</button>
+		<button id="btnActionLeft" class="buttons" style="display: block;" onclick="processKeyPress(97)">Left -A</button>
+		<button id="btnActionBackward" class="buttons" style="display: block;" onclick="processKeyPress(115)">Backward -S</button> 
+		<button id="btnActionRight" class="buttons" style="display: block;" onclick="processKeyPress(100)">Right -D</button> 
+		<button id="btnActionUp" class="buttons" style="display: block;" onclick="processKeyPress(113)">Up -Q</button>
+		<button id="btnActionDown" class="buttons" style="display: block;" onclick="processKeyPress(101)">Down -E</button> 
+		<button id="btnActionZoomIn" class="buttons" style="display: block;" onclick="processKeyPress(90)">Zoom in -Z</button> 
+		<button id="btnActionZoomOut" class="buttons" style="display: block;" onclick="processKeyPress(122)">Zoom out -z</button> 
+		<button id="btnActionReset" class="buttons" style="display: block;" onclick="processKeyPress(114)">Reset -R</button>
+		<button id="btnActionCenter" class="buttons" style="display: block;" onclick="processKeyPress(99)">Center -C</button> 
+		<!-- <button id="btnAction" class="buttons" style="display: block;" onclick="processKeyPress(102)">... -F</button> -->
+		
+		<select name="userObjects" id="ddlUserObjects" onchange="document.querySelector('#selectedObjectId').value = this.value;">
+			<option value=''>Please Select</option>
+			<option value='model1'>pele kick</option>
+			<option value='model2'>pele pass</option>
+			<!-- <option value='model3'>bambotable</option>
+			<option value='{"id":"model3", "gltfmodel":"bamboo_table.glb", "position":"0.8 -1 1", "scale":"0.37 0.37 0.37"}'>bambo table</option> -->
+		</select>
+		<button id="btnActionAddModel" class="buttons" style="display: block;" onclick="processKeyPress(118)">Add Model -V</button>
+		<button id="btnActionRemoveModel" class="buttons" style="display: block;" onclick="processKeyPress(120)">Remove Model -X</button> 
+		<label style="font-size: xx-small;">I/i - Y Move;<br> J/j - X Move;<br> K/k - Z Move; <br>O/o - Rotate; <br>L/l - Scale</label>
 	</div>
     <a-scene>
       <a-assets>
 		<a-asset-item id="peleModel_scissor_kick" src="scissor_kick.glb"></a-asset-item>
 		<a-asset-item id="peleModel_pass" src="pass.glb"></a-asset-item>
+		<!-- <a-asset-item id="bamboo_table" src="bamboo_table.glb"></a-asset-item> -->
 		
         <img id="museum" crossorigin="anonymous" src="museum.jpg">
-        <!-- <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg"> 
-        <img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-        <img id="cubes-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
-        <img id="sechelt-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
-        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
-        <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
-        <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">-->
 
       </a-assets>
 
@@ -92,13 +84,6 @@
 		<a-entity id="model1" gltf-model="#peleModel_scissor_kick" position="0 -1 -2" scale="0.37 0.37 0.37" rotation="0 90 0" animation-mixer="clip: mixamo.com"></a-entity>
 		<a-entity id="model2" gltf-model="#peleModel_pass" position="0.8 -1 1.5" scale="0.37 0.37 0.37" rotation="0 180 0" animation-mixer="clip: mixamo.com"></a-entity> 
 	  </a-entity>
-		<!-- Image links. 
-      <a-entity id="links" layout="type: line; margin: 1.5" position="-1.5 -1 -4">
-        <a-entity template="src: #link" data-src="#museum" data-thumb="#city-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
-      </a-entity>-->
-
       <!-- Camera + cursor. -->
       <a-entity id="camera" camera look-controls position="0 0 0">
         <a-cursor
@@ -110,6 +95,7 @@
           raycaster="objects: .link"></a-cursor>
       </a-entity>
     </a-scene>
+	<input type="hidden" id="selectedObjectId" value="">
   </body>
   <script>
   
@@ -156,27 +142,139 @@
 			goToCenter(); //document.querySelector("#camera").object3D.position.set(0,0,0);
 			zoomcamera(-1);
 		}
-		
-		/*
-		function setFront() {
-			//console.log(document.querySelector("#camera").object3D.rotation.y);
-			if(confirm("you will be taken to center and eyelevel if you are not?")) {		
-				goToCenter();
-				
-				document.querySelector("#image-360").object3D.rotation.x = 0;//+= -1 * (document.querySelector("#camera").object3D.rotation.x);
-				document.querySelector("#image-360").object3D.rotation.y += -1 * (document.querySelector("#camera").object3D.rotation.y);
-				////document.querySelector("#image-360").object3D.rotation.z += -1 * (document.querySelector("#camera").object3D.rotation.z);
-				
-				//https://stackoverflow.com/questions/52432122/how-to-programmatically-rotate-the-camera-in-the-a-frame-scene
-				document.querySelector("#camera").components['look-controls'].pitchObject.rotation.set(0,0,0);
-				document.querySelector("#camera").components['look-controls'].yawObject.rotation.set(0,0,0);
+
+		function moveObject(objectid, dir, axis) {
+			//objectid = "#" + objectid;
+			if(axis == 'Y') {
+				if(dir == 1)
+					document.getElementById(objectid).object3D.position.y += 0.1;
+				else if(dir == -1)
+					document.getElementById(objectid).object3D.position.y -= 0.1;
+				else if(dir == 0)
+					document.getElementById(objectid).object3D.position.y = 0;
 			}
-		}*/
-				
+			
+			if(axis == 'X') {
+				if(dir == 1)
+					document.getElementById(objectid).object3D.position.x += 0.1;
+				else if(dir == -1)
+					document.getElementById(objectid).object3D.position.x -= 0.1;
+				else if(dir == 0)
+					document.getElementById(objectid).object3D.position.x = 0;
+			}
+			
+			if(axis == 'Z') {
+				if(dir == 1)
+					document.getElementById(objectid).object3D.position.z += 0.1;
+				else if(dir == -1)
+					document.getElementById(objectid).object3D.position.z -= 0.1;
+				else if(dir == 0)
+					document.getElementById(objectid).object3D.position.z = 0;
+			}
+		}
+
+		function rotateObject(objectid, dir) {
+			if(dir == 1)
+				document.getElementById(objectid).object3D.rotation.y += 0.1;
+			else if(dir == -1)
+				document.getElementById(objectid).object3D.rotation.y -= 0.1;
+			else if(dir == 0)
+				document.getElementById(objectid).object3D.rotation.y = 0;
+		}
+		
+		function scaleObject(objectid, dir) {
+			let xscale = document.getElementById(objectid).object3D.scale.x;
+			if(dir == 1){
+				xscale += 0.01;
+				document.getElementById(objectid).object3D.scale.set(xscale, xscale, xscale);
+			} else if(dir == -1) {				
+				xscale -= 0.01;
+				document.getElementById(objectid).object3D.scale.set(xscale, xscale, xscale);
+			} else if(dir == 0) {
+				//document.getElementById(objectid).object3D.rotation.y = 0;
+			}
+		}
+
+		function addObjToScene(jsonObjectDetails, objNameByUser) {
+			//const jsonObj = JSON.parse('{"id":"model4", "gltfmodel":"bamboo_table.glb", "position":"0.8 -1 1", "scale":"0.37 0.37 0.37"}');
+			// const jsonObj = JSON.parse('{"id":"model4", "gltfmodel":".//modelss//vintage_sofa.glb", "position":"0.8 -1 1", "scale":"0.37 0.37 0.37"}');
+			const jsonObj = jsonObjectDetails;
+
+						
+			const objId = jsonObj.id + Date.now();
+
+			let ddlUserObjects = document.getElementById("ddlUserObjects");	
+			let option = document.createElement("option");
+			// option.innerHTML = prompt("object name:"); //objNameByUser
+			option.innerHTML = objNameByUser; //
+			option.value = objId;
+			ddlUserObjects.options.add(option);
+			ddlUserObjects.value = objId;
+			//save in hidden variable
+			document.querySelector("#selectedObjectId").value = objId;
+
+			var elobj = document.createElement('a-entity');
+			elobj.setAttribute("id", objId);
+			elobj.setAttribute("gltf-model", jsonObj.gltfmodel);
+			//Todo position where camera is looking
+			elobj.setAttribute("position", jsonObj.position);
+			elobj.setAttribute("scale", jsonObj.scale);
+			document.querySelector('#models').appendChild(elobj);
+		}
+
+		function addModel(/*objId*/) {
+			let objId = prompt("object id:"); //
+			let objNameByUser = prompt("object name:"); //objNameByUsers
+			let jsonObj = null;
+			switch(objId) {
+				case "1":
+					jsonObj = JSON.parse('{"id":"vintage_sofa", "gltfmodel":".//models//vintage_sofa.glb", "position":"0.8 -1 -2", "scale":"0.37 0.37 0.37"}');
+					//jsonObj.position = "0 0 0";
+					break;
+				case "2":
+					jsonObj = JSON.parse('{"id":"bamboo_table", "gltfmodel":".//models//bamboo_table.glb", "position":"0.8 -1 -1.5", "scale":"0.37 0.37 0.37"}');
+					break;
+				case "3":
+					jsonObj = JSON.parse('{"id":"bedlamp", "gltfmodel":".//models//bedlamp.glb", "position":"1.8 -1 1.5", "scale":"1.1 1.1 1.1"}');
+					break;
+				case "4":
+					jsonObj = JSON.parse('{"id":"old_wooden_table", "gltfmodel":".//models//old_wooden_table.glb", "position":"0.8 -1 -1.5", "scale":"5.5 5.5 5.5"}');
+					break;
+				case "5":
+					jsonObj = JSON.parse('{"id":"fidget_cube", "gltfmodel":".//models//fidget_cube.glb", "position":"0 -1 -2", "scale":"0.1 0.1 0.1"}');
+					break;
+				case "6":
+					jsonObj = JSON.parse('{"id":"lowpoly_cupboard_-_game_ready", "gltfmodel":".//models//lowpoly_cupboard_-_game_ready.glb", "position":"0.8 -1 1", "scale":"0.1 0.1 0.1"}');
+					break;
+			}
+			
+			//location of added object is where camera is pointing
+			let stepradius = 2, x=0,y=-1,z=0;
+			y_ang = document.querySelector("#camera").object3D.rotation.y;
+			//x=r.cos(0) y=r.sin(0)
+			z -= stepradius * Math.cos(y_ang);
+			x -= stepradius * Math.sin(y_ang);
+			y = -1;
+			jsonObj.position = "" + x + " " + y + " " + z;
+			addObjToScene(jsonObj, objNameByUser);
+		}
+
+		function removeModel() {
+			let ddlUserObjects = document.getElementById("ddlUserObjects")
+			if(ddlUserObjects.value != "") {
+				elemId = document.querySelector("#selectedObjectId").value;
+				document.getElementById(elemId).remove();
+				//remove from ddl and hiddenfield
+				ddlUserObjects.remove(ddlUserObjects.selectedIndex);
+				document.querySelector("#selectedObjectId").value = "";
+			} else {console.log("select model to remove");}
+		}
+					
 		
 	document.onkeypress = function (e) {
 		e = e || window.event;
 		//alert(e.keyCode);
+		//console.log(e.keyCode);
 		// use e.keyCode
 /*
 		119 - w	-fromt
@@ -192,6 +290,8 @@
   //document.querySelector("#camera").object3D.position.y=5
 
 	function processKeyPress(keyCode) {
+		console.log(keyCode);
+		let selectedObjectId = document.querySelector("#selectedObjectId").value;
 	
 		let x=0,y=0,z=0;
 		let y_ang = 0, stepradius = 1;
@@ -277,21 +377,68 @@
 			console.log("z-Zoom out");
 			zoomcamera(0);
 			break;
+
+
 		  case 88:
 		  case 120:
-			console.log("X-...");
-			// goToCenter();
+			console.log("X- Remove Model");
+			removeModel();
 			break;
 		  case 86:
 		  case 118:
-			console.log("V-...");
-			// goToCenter();
+			console.log("V- Add Model");
+			addModel();
+			break;		
+			
+		  case 73:
+			console.log("I- Y axis plus");
+			moveObject(selectedObjectId, 1, 'Y');
 			break;
+		  case 105:
+			console.log("i-Y axis minus");
+			moveObject(selectedObjectId, -1, 'Y');
+			break;
+		  case 74:
+			console.log("J- X axis plus");
+			moveObject(selectedObjectId, 1, 'X');
+			break;
+		  case 106:
+			console.log("j-X axis minus");
+			moveObject(selectedObjectId, -1, 'X');
+			break;
+		  case 75:
+			console.log("K- Z axis plus");
+			moveObject(selectedObjectId, 1, 'Z');
+			break;
+		  case 107:
+			console.log("k-Z axis minus");
+			moveObject(selectedObjectId, -1, 'Z');
+			break;
+
+		  case 79:
+			console.log("O- Rotate clockwise");
+			rotateObject(selectedObjectId, 1);
+			break;
+		  case 111:
+			console.log("o- Rotate clockwise");
+			rotateObject(selectedObjectId, -1);
+			break;
+
+		  case 76:
+			console.log("L- Scale Up");
+			scaleObject(selectedObjectId, 1);
+			break;
+		  case 108:
+			console.log("l- Scale Down");
+			scaleObject(selectedObjectId, -1);
+			break;
+
+
 		  default:
 			// code block
+			break;
 		}
 	}
-	
   
   </script>
   
