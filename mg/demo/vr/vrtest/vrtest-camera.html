@@ -223,7 +223,7 @@
 		}
 
 		function addModel(/*objId*/) {
-			let objId = prompt("object id:"); //
+			let objId = prompt("object id: (1-sofa; 2-sitting table; 3-bed lamp; 4-table; 5-fidget cube; 6-cupboard)"); //
 			let objNameByUser = prompt("object name:"); //objNameByUsers
 			let jsonObj = null;
 			switch(objId) {
@@ -238,7 +238,7 @@
 					jsonObj = JSON.parse('{"id":"bedlamp", "gltfmodel":".//models//bedlamp.glb", "position":"1.8 -1 1.5", "scale":"1.1 1.1 1.1"}');
 					break;
 				case "4":
-					jsonObj = JSON.parse('{"id":"old_wooden_table", "gltfmodel":".//models//old_wooden_table.glb", "position":"0.8 -1 -1.5", "scale":"5.5 5.5 5.5"}');
+					jsonObj = JSON.parse('{"id":"old_wooden_table", "gltfmodel":".//models//old_wooden_table.glb", "position":"0.8 -1 -1.5", "scale":"0.7 0.7 0.7"}');
 					break;
 				case "5":
 					jsonObj = JSON.parse('{"id":"fidget_cube", "gltfmodel":".//models//fidget_cube.glb", "position":"0 -1 -2", "scale":"0.1 0.1 0.1"}');
