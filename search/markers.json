@@ -57,6 +57,9 @@
 		{"i":"61", "n": "Hero MotoCorp", "l": "hero", "d": "1", "s": "0.26:0.26:0.26", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit HP", "bl":"https://www.heromotocorp.com/"},
 		{"i":"62", "n": "HP Computer", "l": "hp", "d": "1", "s": "0.26:0.26:0.26", "r": "90:0:0", "a":"2", "as":"30", "b":"Visit HP", "bl":"https://www.hp.com/"},
 		
+		{"i":"63", "n": "ISRO - Sriharikota lauchpad with GSLV MK3", "l": "isro_sriharikota_lauchpad_gslv_mk3", "d": "1", "s": "0.7:0.7:0.7", "r": "90:0:0", "b":"More info on ISRO website", "bl":"https://www.isro.gov.in/GSLVmk3_CON.html"},
+		{"i":"64", "n": "ISRO - Chandrayaan 2", "l": "isro_chandrayaan2", "d": "1", "s": "0.7:0.7:0.7", "r": "90:0:0", "b":"More info on ISRO website", "bl":"https://www.isro.gov.in/Chandrayaan_2.html"},
+		
 		{"i":"c1", "n": "Card Miraag HLN", "l": "cardmiraaghln", "d": "2", "s": "0.007:0.007:0.007", "r": "90:0:0", "a":"2", "as":"20", "at":"5000", "w": "0.9", "h": "0.5", "o":"l", "b":"Visit Miraag", "bl":"https://www.miraag.com/"},
 
 		
@@ -75,6 +78,6 @@
 		{"i":"16", "g": "1", "n": "demo", "l": "rajt2", "w": "0.9", "h": "0.5"}
 		
 	],
-	"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Orientation l for landscape p for potrait (default potrait)":"o", "Is3d 1-3d 2-3dthenvideo":"d", "scaleif3d":"s", "positionif3d":"p", "rotationif3d":"r", "animationId":"a", "animationSpeed":"as", "animationTimer":"at", "btnText":"b", "btnLink":"bl"}
+	"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Orientation l for landscape p for potrait (default potrait)":"o", "Is3d null/blank-videoonly 1-3d 2-3dthenvideo":"d", "scaleif3d":"s", "positionif3d":"p", "rotationif3d":"r", "animationId":"a", "animationSpeed":"as", "animationTimer":"at", "btnText":"b", "btnLink":"bl"}
 }
 
