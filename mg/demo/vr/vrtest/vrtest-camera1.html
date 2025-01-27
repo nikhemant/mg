@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<!-- **************************************************
+https://medium.com/samsung-internet-dev/a-frame-scene-to-equirectangular-image-e0c2965945aa
+AFRAME.scenes[0].components.screenshot.capture() 
+************************************************** -->
+<!-- https://github.com/aframevr/aframe/blob/master/examples/docs/360-gallery/index.html -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VR Test with Camera movement</title>
+    <meta name="description" content="VR Test with Camera movement">
+    <!-- If running this example without a local copy of A-Frame, replace this next line with:
+    <script src="https://aframe.io/releases/<release_number>/aframe.min.js"></script>
+    -->
+    <script src="aframe-master.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.x.x/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.jss"></script>
+	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+	<style>
+	.rightsidecontainer {
+		position: absolute;
+		top: 5%;
+		right: 3%;
+		width: 15%;
+		height: 90%;
+		display: block;
+		justify-content: center;
+		align-items: center;
+		z-index: 10;
+		/* overflow: scroll; */
+	}
+	.buttons {
+		/*background-image: url(imgs/mute.png);*/
+		background-repeat: no-repeat;
+		align-items: center;
+		height: 37px;
+		width: 47px;
+		background-color: rgba(200, 200, 200, 0.3);
+		margin: 0.5em;
+		padding: 0.5em;
+		font-size: 0.5em;
+	}
+	</style>
+  </head>
+  <body>
+	<div class="rightsidecontainer">
+		<div style="overflow-y: scroll; height:20%">
+			<button id="btnActionForward" class="buttons" style="display: block;" onclick="processKeyPress(119)">Forward -W</button>
+			<button id="btnActionLeft" class="buttons" style="display: block;" onclick="processKeyPress(97)">Left -A</button>
+			<button id="btnActionBackward" class="buttons" style="display: block;" onclick="processKeyPress(115)">Backward -S</button> 
+			<button id="btnActionRight" class="buttons" style="display: block;" onclick="processKeyPress(100)">Right -D</button> 
+			<button id="btnActionUp" class="buttons" style="display: block;" onclick="processKeyPress(113)">Up -Q</button>
+			<button id="btnActionDown" class="buttons" style="display: block;" onclick="processKeyPress(101)">Down -E</button> 
+			<button id="btnActionZoomIn" class="buttons" style="display: block;" onclick="processKeyPress(90)">Zoom in -Z</button> 
+			<button id="btnActionZoomOut" class="buttons" style="display: block;" onclick="processKeyPress(122)">Zoom out -z</button> 
+		
+			<button id="btnActionReset" class="buttons" style="display: block;" onclick="processKeyPress(114)">Reset -R</button>
+			<button id="btnActionCenter" class="buttons" style="display: block;" onclick="processKeyPress(99)">Center -C</button> 
+			<!-- <button id="btnAction" class="buttons" style="display: block;" onclick="processKeyPress(102)">... -F</button> -->
+		</div>
+			<select name="userObjects" id="ddlUserObjects" onchange="document.querySelector('#selectedObjectId').value = this.value;">
+				<option value=''>Please Select</option>
+				<option value='model1'>red sofa</option>
+				<!--<option value='model2'>pele pass</option>
+				<option value='model3'>bambotable</option>
+				<option value='{"id":"model3", "gltfmodel":"bamboo_table.glb", "position":"0.8 -1 1", "scale":"0.37 0.37 0.37"}'>bambo table</option> -->
+			</select>					
+		<div style="overflow-y: scroll; height:60%">
+			<button id="btnActionAddModel" class="buttons" style="display: block;" onclick="processKeyPress(118)">Add Model -V</button>
+			<button id="btnActionRemoveModel" class="buttons" style="display: block;" onclick="processKeyPress(120)">Remove Model -X</button> 
+			<!-- <label style="font-size: xx-small;">I/i - Y Move;<br> J/j - X Move;<br> K/k - Z Move; <br>O/o - Rotate; <br>L/l - Scale</label> -->
+
+			<button id="btnActionYMoveUp" class="buttons" style="display: block;" onclick="processKeyPress(73)">Move YUp -I</button> 
+			<button id="btnActionYMoveDown" class="buttons" style="display: block;" onclick="processKeyPress(105)">Move YDown -i</button>
+			<button id="btnActionXMoveRight" class="buttons" style="display: block;" onclick="processKeyPress(74)">Move XRight -J</button> 
+			<button id="btnActionXMoveleft" class="buttons" style="display: block;" onclick="processKeyPress(106)">Move XLeft -j</button>
+			<button id="btnActionZMoveForward" class="buttons" style="display: block;" onclick="processKeyPress(75)">Move ZForward -K</button> 
+			<button id="btnActionZMoveBackward" class="buttons" style="display: block;" onclick="processKeyPress(107)">Move ZBackward -k</button>
+			<button id="btnActionRotateAntiClockwise" class="buttons" style="display: block;" onclick="processKeyPress(79)">Rotate Anti-Clockwise -O</button> 
+			<button id="btnActionRotateClockwise" class="buttons" style="display: block;" onclick="processKeyPress(111)">Rotate Clockwise -o</button>
+			<button id="btnActionScaleUp" class="buttons" style="display: block;" onclick="processKeyPress(76)">Scale Up -L</button> 
+			<button id="btnActionScaleDown" class="buttons" style="display: block;" onclick="processKeyPress(108)">Scale Down -l</button>
+		</div>	
+	</div>
+    <a-scene>
+      <a-assets>
+		<a-asset-item id="red_sofa" src=".//models//redsofa.glb"></a-asset-item>
+		<!--<a-asset-item id="peleModel_pass" src=".//models//infinite_looper.glb"></a-asset-item>
+		 <a-asset-item id="bamboo_table" src="bamboo_table.glb"></a-asset-item> -->
+		
+        <img id="skyboximg" crossorigin="anonymous" src="#">
+
+      </a-assets>
+
+      <!-- 360-degree image. -->
+      <a-sky id="image-360" radius="10" src="#skyboximg"
+             animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+             animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade">
+	  </a-sky>
+	  <a-entity id="models" position="0 0 0">
+		<a-entity id="model1" gltf-model="#red_sofa" position="0 -1 -2" scale="10 10 10" rotation="0 0 0" animation-mixer="clip: mixamo.com"></a-entity>
+		<!-- <a-entity id="model2" gltf-model="#peleModel_pass" position="0.8 -1 1.5" scale="0.37 0.37 0.37" rotation="0 180 0" animation-mixer="clip: mixamo.com"></a-entity>  -->
+	  </a-entity>
+      <!-- Camera + cursor. -->
+      <a-entity id="camera" camera look-controls position="0 0 0">
+        <a-cursor
+          id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__mouseenter="_event: mouseenter; color: springgreen"
+          event-set__mouseleave="_event: mouseleave; color: black"
+          raycaster="objects: .link"></a-cursor>
+      </a-entity>
+    </a-scene>
+	<input type="hidden" id="selectedObjectId" value="">
+  </body>
+  <script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const params = (new URL(location)).searchParams; //get query strings	
+			//if(params.has('i')) { i = params.get('i'); }
+			const imgpath = params.get('img');
+			document.getElementById("skyboximg").src = imgpath != null?imgpath:"museum.jpg";
+			//alert("Ready!");
+		}, false);
+		//https://stackoverflow.com/questions/56344425/allow-touch-control-up-and-down-in-aframe
+		//to fix the up down movement on mobile devices
+		AFRAME.components["look-controls"].Component.prototype.onTouchMove = function (t) {
+			//console.log(this.touchStarted);
+			if (this.touchStarted && this.data.touchEnabled) {
+				this.pitchObject.rotation.x += .6 * Math.PI * (t.touches[0].pageY - this.touchStart.y) / this.el.sceneEl.canvas.clientHeight;
+				this.yawObject.rotation.y += /*  */ Math.PI * (t.touches[0].pageX - this.touchStart.x) / this.el.sceneEl.canvas.clientWidth;
+				this.pitchObject.rotation.x = Math.max(Math.PI / -2, Math.min(Math.PI / 2, this.pitchObject.rotation.x));
+				this.touchStart = {
+					x: t.touches[0].pageX,
+					y: t.touches[0].pageY
+				}
+			}
+		}
+		/*
+		AFRAME.components["look-controls"].Component.prototype.onTouchEnd = function (t) {
+				//console.log(document.querySelector("#camera").object3D.rotation.y);
+				//document.querySelector("#image-360").object3D.rotation.x += -1 * (document.querySelector("#camera").object3D.rotation.x);
+				document.querySelector("#image-360").object3D.rotation.y += -1 * (document.querySelector("#camera").object3D.rotation.y);
+				////document.querySelector("#image-360").object3D.rotation.z += -1 * (document.querySelector("#camera").object3D.rotation.z);
+				document.querySelector("#camera").components['look-controls'].pitchObject.rotation.set(0,0,0);
+				document.querySelector("#camera").components['look-controls'].yawObject.rotation.set(0,0,0);
+		}*/	
+		
+		function zoomcamera(inout) {		
+			let cam = document.querySelector("#camera").getAttribute("camera");			
+			if(inout == 1 ) { cam.zoom += 0.1; } 
+			else if(inout == 0 ) { cam.zoom -= 0.1; }			
+			else if(inout == -1 ) { cam.zoom = 1; } //reset			
+			document.querySelector("#camera").setAttribute("camera", cam);
+		}
+		
+		function goToCenter() {		
+			document.querySelector("#camera").object3D.position.set(0,0,0);
+		}
+		
+		function defaultPosition() {		
+			document.querySelector("#camera").components['look-controls'].pitchObject.rotation.set(0,0,0);
+			document.querySelector("#camera").components['look-controls'].yawObject.rotation.set(0,0,0);
+			document.querySelector("#image-360").object3D.rotation.set(0,0,0);
+			goToCenter(); //document.querySelector("#camera").object3D.position.set(0,0,0);
+			zoomcamera(-1);
+		}
+
+		function moveObject(objectid, dir, axis) {
+			//objectid = "#" + objectid;
+			if(axis == 'Y') {
+				if(dir == 1)
+					document.getElementById(objectid).object3D.position.y += 0.1;
+				else if(dir == -1)
+					document.getElementById(objectid).object3D.position.y -= 0.1;
+				else if(dir == 0)
+					document.getElementById(objectid).object3D.position.y = 0;
+			}
+			
+			if(axis == 'X') {
+				if(dir == 1)
+					document.getElementById(objectid).object3D.position.x += 0.1;
+				else if(dir == -1)
+					document.getElementById(objectid).object3D.position.x -= 0.1;
+				else if(dir == 0)
+					document.getElementById(objectid).object3D.position.x = 0;
+			}
+			
+			if(axis == 'Z') {
+				if(dir == 1)
+					document.getElementById(objectid).object3D.position.z += 0.1;
+				else if(dir == -1)
+					document.getElementById(objectid).object3D.position.z -= 0.1;
+				else if(dir == 0)
+					document.getElementById(objectid).object3D.position.z = 0;
+			}
+		}
+
+		function rotateObject(objectid, dir) {
+			if(dir == 1)
+				document.getElementById(objectid).object3D.rotation.y += 0.1;
+			else if(dir == -1)
+				document.getElementById(objectid).object3D.rotation.y -= 0.1;
+			else if(dir == 0)
+				document.getElementById(objectid).object3D.rotation.y = 0;
+		}
+		
+		function scaleObject(objectid, dir) {
+			let xscale = document.getElementById(objectid).object3D.scale.x;
+			if(dir == 1){
+				xscale += 0.01;
+				document.getElementById(objectid).object3D.scale.set(xscale, xscale, xscale);
+			} else if(dir == -1) {				
+				xscale -= 0.01;
+				document.getElementById(objectid).object3D.scale.set(xscale, xscale, xscale);
+			} else if(dir == 0) {
+				//document.getElementById(objectid).object3D.rotation.y = 0;
+			}
+		}
+
+		function addObjToScene(jsonObjectDetails, objNameByUser) {
+			//const jsonObj = JSON.parse('{"id":"model4", "gltfmodel":"bamboo_table.glb", "position":"0.8 -1 1", "scale":"0.37 0.37 0.37"}');
+			// const jsonObj = JSON.parse('{"id":"model4", "gltfmodel":".//modelss//vintage_sofa.glb", "position":"0.8 -1 1", "scale":"0.37 0.37 0.37"}');
+			const jsonObj = jsonObjectDetails;
+
+						
+			const objId = jsonObj.id + Date.now();
+
+			let ddlUserObjects = document.getElementById("ddlUserObjects");	
+			let option = document.createElement("option");
+			// option.innerHTML = prompt("object name:"); //objNameByUser
+			option.innerHTML = objNameByUser; //
+			option.value = objId;
+			ddlUserObjects.options.add(option);
+			ddlUserObjects.value = objId;
+			//save in hidden variable
+			document.querySelector("#selectedObjectId").value = objId;
+
+			var elobj = document.createElement('a-entity');
+			elobj.setAttribute("id", objId);
+			elobj.setAttribute("gltf-model", jsonObj.gltfmodel);
+			//Todo position where camera is looking
+			elobj.setAttribute("position", jsonObj.position);
+			elobj.setAttribute("scale", jsonObj.scale);
+			document.querySelector('#models').appendChild(elobj);
+		}
+
+		function addModel(/*objId*/) {
+			let objId = prompt("object id: (1-sofa; 2-sitting table; 3-bed lamp; 4-table; 5-fidget cube; 6-cupboard)"); //
+			let objNameByUser = prompt("object name:"); //objNameByUsers
+			let jsonObj = null;
+			switch(objId) {
+				case "1":
+					jsonObj = JSON.parse('{"id":"vintage_sofa", "gltfmodel":".//models//vintage_sofa.glb", "position":"0.8 -1 -2", "scale":"0.37 0.37 0.37"}');
+					//jsonObj.position = "0 0 0";
+					break;
+				case "2":
+					jsonObj = JSON.parse('{"id":"bamboo_table", "gltfmodel":".//models//bamboo_table.glb", "position":"0.8 -1 -1.5", "scale":"0.37 0.37 0.37"}');
+					break;
+				case "3":
+					jsonObj = JSON.parse('{"id":"bedlamp", "gltfmodel":".//models//bedlamp.glb", "position":"1.8 -1 1.5", "scale":"1.1 1.1 1.1"}');
+					break;
+				case "4":
+					jsonObj = JSON.parse('{"id":"old_wooden_table", "gltfmodel":".//models//old_wooden_table.glb", "position":"0.8 -1 -1.5", "scale":"0.7 0.7 0.7"}');
+					break;
+				case "5":
+					jsonObj = JSON.parse('{"id":"fidget_cube", "gltfmodel":".//models//fidget_cube.glb", "position":"0 -1 -2", "scale":"0.1 0.1 0.1"}');
+					break;
+				case "6":
+					jsonObj = JSON.parse('{"id":"lowpoly_cupboard", "gltfmodel":".//models//lowpoly_cupboard.glb", "position":"0.8 -1 1", "scale":"0.1 0.1 0.1"}');
+					break;
+			}
+			
+			//location of added object is where camera is pointing
+			let stepradius = 2, x=0,y=-1,z=0;
+			y_ang = document.querySelector("#camera").object3D.rotation.y;
+			//x=r.cos(0) y=r.sin(0)
+			z -= stepradius * Math.cos(y_ang);
+			x -= stepradius * Math.sin(y_ang);
+			y = -1;
+			jsonObj.position = "" + x + " " + y + " " + z;
+			addObjToScene(jsonObj, objNameByUser);
+		}
+
+		function removeModel() {
+			let ddlUserObjects = document.getElementById("ddlUserObjects")
+			if(ddlUserObjects.value != "") {
+				elemId = document.querySelector("#selectedObjectId").value;
+				document.getElementById(elemId).remove();
+				//remove from ddl and hiddenfield
+				ddlUserObjects.remove(ddlUserObjects.selectedIndex);
+				document.querySelector("#selectedObjectId").value = "";
+			} else {console.log("select model to remove");}
+		}
+					
+		
+	document.onkeypress = function (e) {
+		e = e || window.event;
+		//alert(e.keyCode);
+		//console.log(e.keyCode);
+		// use e.keyCode
+/*
+		119 - w	-fromt
+		97 -a -left
+		115 - s -back
+		100 -d -right
+		113 - q - up
+		101 - e - down
+*/
+		processKeyPress(e.keyCode);
+	};
+  //document.querySelector("#camera").object3D.position.set(1, 1, 1);
+  //document.querySelector("#camera").object3D.position.y=5
+
+	function processKeyPress(keyCode) {
+		console.log(keyCode);
+		let selectedObjectId = document.querySelector("#selectedObjectId").value;
+	
+		let x=0,y=0,z=0;
+		let y_ang = 0, stepradius = 1;
+		
+		switch(keyCode) {
+		  case 87:
+		  case 119:
+			console.log("w-front");
+			// z = document.querySelector("#camera").object3D.position.z;
+			// document.querySelector("#camera").object3D.position.z = z-1;
+
+			y_ang = document.querySelector("#camera").object3D.rotation.y;
+			//x=r.cos(0) y=r.sin(0)
+			document.querySelector("#camera").object3D.position.z -=  stepradius * Math.cos(y_ang);
+			document.querySelector("#camera").object3D.position.x -= stepradius * Math.sin(y_ang);
+			break;
+		  case 65:
+		  case 97:
+			console.log("a-left");
+			// x = document.querySelector("#camera").object3D.position.x;
+			// document.querySelector("#camera").object3D.position.x = x-1;
+
+			y_ang = document.querySelector("#camera").object3D.rotation.y + (Math.PI/2);
+			//x=r.cos(0) y=r.sin(0)
+			document.querySelector("#camera").object3D.position.z -=  stepradius * Math.cos(y_ang);
+			document.querySelector("#camera").object3D.position.x -= stepradius * Math.sin(y_ang);
+			break;
+		  case 83:
+		  case 115:
+			console.log("s-back");
+			// z = document.querySelector("#camera").object3D.position.z;
+			// document.querySelector("#camera").object3D.position.z = z+1;
+			
+			y_ang = document.querySelector("#camera").object3D.rotation.y;
+			//x=r.cos(0) y=r.sin(0)
+			document.querySelector("#camera").object3D.position.z +=  stepradius * Math.cos(y_ang);
+			document.querySelector("#camera").object3D.position.x += stepradius * Math.sin(y_ang);
+			break;
+		  case 68:
+		  case 100:
+			console.log("d-right");
+			// x = document.querySelector("#camera").object3D.position.x;
+			// document.querySelector("#camera").object3D.position.x = x+1;
+			
+			y_ang = document.querySelector("#camera").object3D.rotation.y + (Math.PI/2);
+			//x=r.cos(0) y=r.sin(0)			
+			document.querySelector("#camera").object3D.position.z +=  stepradius * Math.cos(y_ang);
+			document.querySelector("#camera").object3D.position.x += stepradius * Math.sin(y_ang);
+			break;
+		  case 81:
+		  case 113:
+			console.log("q-up");
+			y = document.querySelector("#camera").object3D.position.y;
+			document.querySelector("#camera").object3D.position.y = y+1;
+			break;
+		  case 69:
+		  case 101:
+			console.log("e-down");
+			y = document.querySelector("#camera").object3D.position.y;
+			document.querySelector("#camera").object3D.position.y = y-1;
+			break;
+		  case 82:
+		  case 114:
+			console.log("r-reset");
+			//window.location.reload();
+			defaultPosition();
+			break;
+		  case 70:
+		  case 102:
+			console.log("F-Set front");
+			// setFront();
+			break;
+		  case 67:
+		  case 99:
+			console.log("C-Goto Center");
+			goToCenter();
+			break;
+		  case 90:
+			console.log("Z-Zoom in");
+			zoomcamera(1);
+			break;
+		  case 122:
+			console.log("z-Zoom out");
+			zoomcamera(0);
+			break;
+
+
+		  case 88:
+		  case 120:
+			console.log("X- Remove Model");
+			removeModel();
+			break;
+		  case 86:
+		  case 118:
+			console.log("V- Add Model");
+			addModel();
+			break;		
+			
+		  case 73:
+			console.log("I- Y axis plus");
+			moveObject(selectedObjectId, 1, 'Y');
+			break;
+		  case 105:
+			console.log("i-Y axis minus");
+			moveObject(selectedObjectId, -1, 'Y');
+			break;
+		  case 74:
+			console.log("J- X axis plus");
+			moveObject(selectedObjectId, 1, 'X');
+			break;
+		  case 106:
+			console.log("j-X axis minus");
+			moveObject(selectedObjectId, -1, 'X');
+			break;
+		  case 75:
+			console.log("K- Z axis plus");
+			moveObject(selectedObjectId, 1, 'Z');
+			break;
+		  case 107:
+			console.log("k-Z axis minus");
+			moveObject(selectedObjectId, -1, 'Z');
+			break;
+
+		  case 79:
+			console.log("O- Rotate clockwise");
+			rotateObject(selectedObjectId, 1);
+			break;
+		  case 111:
+			console.log("o- Rotate clockwise");
+			rotateObject(selectedObjectId, -1);
+			break;
+
+		  case 76:
+			console.log("L- Scale Up");
+			scaleObject(selectedObjectId, 1);
+			break;
+		  case 108:
+			console.log("l- Scale Down");
+			scaleObject(selectedObjectId, -1);
+			break;
+
+
+		  default:
+			// code block
+			break;
+		}
+	}
+  
+  </script>
+  
+</html>
