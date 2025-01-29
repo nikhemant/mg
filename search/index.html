@@ -135,7 +135,8 @@ function autocomplete(inp, arr) {
 var markers = []; //["MNS","Google","Coca-Cola","MNS card","Crocin","Haware","M F Hussain Painting","Prashant Damle","Savlon","Zee Marathi Serial Agga Bai Sasubai", "Mc Donalds", "KFC", "Marie Gold", "Burger King", "Pizza Hut", "Swiggy", "Zomato"]
 
 document.addEventListener("DOMContentLoaded", function() {
-  fetch('./markers.json')
+  //fetch('./markers.json')
+  fetch("https://mg-markers-json.nikhemant.workers.dev/?id=DoNotshowIngallery", {	method: 'GET' })
   .then(response => {return response.json();})
   .then(data => {     
     let link = "https://miraag.net/m/l/l.html";
@@ -147,11 +148,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const e = document.createElement("template");
     
     //if "DoNotshowINgallery":"g" is not null then do not display 
-    let markersToDisplay = data.markers.filter(marker => marker.g == null || marker.g == ""); 
-    markersToDisplay.forEach(marker => {
+    // let markersToDisplay = data.markers.filter(marker => marker.g == null || marker.g == ""); 
+    // markersToDisplay.forEach(marker => {
+       
+    data.forEach(j => {
       //console.log(marker);
-                  
-      //"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Is3d":"d", "scaleif3d":"s","rotationif3d":"r"}
+      marker = JSON.parse(j.json_details);
+      //"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Orientation l for landscape p for potrait (default potrait)":"o", "Is3d null/blank-videoonly 1-3d 2-3dthenvideo":"d", "scaleif3d":"s", "positionif3d":"p", "rotationif3d":"r", "animationId":"a", "animationSpeed":"as", "animationTimer":"at", "btnText":"b", "btnLink":"bl"}
+
       name = marker.n;
       logo = marker.l;
       id = marker.i;
